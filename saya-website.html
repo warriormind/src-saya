@@ -1,0 +1,2226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAYA - Sustainable Agriculture Youth Alliance</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #1f2937;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('Hapitec Company Logo/Hapitec Fully Transparent.png');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 300px;
+            opacity: 0.05;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            transition: transform 0.3s ease;
+        }
+
+        .navbar.hidden {
+            transform: translateY(-100%);
+        }
+
+        .nav-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+        }
+
+        .hapitec-logo {
+            width: 36px;
+            height: 36px;
+            opacity: 0.95;
+        }
+
+        .nav-logo-icon {
+            width: 36px;
+            height: 36px;
+            color: #16a34a;
+        }
+
+        .nav-logo-text {
+            color: #15803d;
+            letter-spacing: 0.2em;
+            font-weight: 700;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-link {
+            color: #374151;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: #16a34a;
+        }
+
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: #16a34a;
+            border-radius: 2px;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        .mobile-menu-btn svg {
+            width: 28px;
+            height: 28px;
+            color: #16a34a;
+        }
+
+        /* Sections */
+        .section {
+            display: none;
+            min-height: 100vh;
+            padding-top: 70px;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(135deg, #d1fae5 0%, #dcfce7 50%, #ccfbf1 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pattern {
+            position: absolute;
+            inset: 0;
+            opacity: 0.1;
+            background-image: radial-gradient(circle at 2px 2px, rgb(34, 197, 94) 1px, transparent 0);
+            background-size: 40px 40px;
+        }
+
+        .hero {
+            position: relative;
+            z-index: 10;
+            min-height: calc(100vh - 70px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 80px 24px;
+        }
+
+        .content {
+            max-width: 1280px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 32px;
+            animation: fadeInDown 1s ease;
+        }
+
+        .logo-wrapper {
+            position: relative;
+        }
+
+        .logo-glow {
+            position: absolute;
+            inset: 0;
+            background-color: #22c55e;
+            opacity: 0.2;
+            filter: blur(48px);
+            border-radius: 50%;
+        }
+
+        .logo-circle {
+            position: relative;
+            background-color: white;
+            padding: 24px;
+            border-radius: 50%;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo-icon {
+            width: 64px;
+            height: 64px;
+            color: #16a34a;
+        }
+
+        .main-title {
+            color: #059669;
+            letter-spacing: 0.1em;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .divider-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 8px;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+
+        .divider-line {
+            height: 1px;
+            width: 48px;
+            background-color: #22c55e;
+        }
+
+        .acronym {
+            color: #15803d;
+            letter-spacing: 0.3em;
+            font-weight: 700;
+        }
+
+        .motto {
+            color: #15803d;
+            font-style: italic;
+            font-weight: 600;
+            margin-bottom: 24px;
+            animation: fadeInUp 1s ease 0.6s both;
+        }
+
+        .tagline {
+            color: #374151;
+            max-width: 768px;
+            margin: 0 auto 48px;
+            animation: fadeInUp 1s ease 0.8s both;
+        }
+
+        .buttons {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 64px;
+            animation: fadeInUp 1s ease 1s both;
+        }
+
+        .btn {
+            padding: 16px 32px;
+            border-radius: 9999px;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background-color: #16a34a;
+            color: white;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-primary:hover {
+            background-color: #15803d;
+            transform: translateY(-2px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: #15803d;
+            border: 2px solid #16a34a;
+        }
+
+        .btn-outline:hover {
+            background-color: #f0fdf4;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+            max-width: 1024px;
+            margin: 0 auto;
+            animation: fadeInUp 1s ease 1.2s both;
+        }
+
+        .feature-card {
+            background-color: rgba(255, 255, 255, 0.8);
+            -webkit-backdrop-filter: blur(8px);
+            backdrop-filter: blur(8px);
+            padding: 32px;
+            border-radius: 16px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            border: 1px solid #dcfce7;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15);
+        }
+
+        .feature-icon-wrapper {
+            background-color: #dcfce7;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+        }
+
+        .feature-icon {
+            width: 28px;
+            height: 28px;
+            color: #16a34a;
+        }
+
+        .feature-card h3 {
+            color: #166534;
+            margin-bottom: 12px;
+        }
+
+        .feature-card p {
+            color: #4b5563;
+        }
+
+        /* Content Sections */
+        .content-section {
+            background: linear-gradient(to bottom, #ffffff 0%, #f0fdf4 100%);
+            padding: 80px 24px;
+        }
+
+        .section-container {
+            max-width: 1024px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+
+        .section-header h1 {
+            color: #15803d;
+            margin-bottom: 16px;
+        }
+
+        .section-header .subtitle {
+            color: #059669;
+            font-weight: 600;
+            margin-bottom: 12px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .section-header p {
+            color: #4b5563;
+            max-width: 768px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: white;
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 32px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e5e7eb;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+            transform: translateY(-4px);
+        }
+
+        .card h2 {
+            color: #166534;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .card h3 {
+            color: #15803d;
+            margin-top: 24px;
+            margin-bottom: 12px;
+        }
+
+        .card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .card ul li {
+            padding: 8px 0 8px 32px;
+            position: relative;
+            color: #4b5563;
+        }
+
+        .card ul li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #16a34a;
+            font-weight: 700;
+        }
+
+        /* Membership Form Styles */
+        .membership-form {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            color: #15803d;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            padding: 12px;
+            border: 2px solid #dcfce7;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+            background: white;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #16a34a;
+            box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .membership-form button {
+            align-self: flex-start;
+            margin-top: 8px;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+
+        .value-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f0fdf4 100%);
+            padding: 24px;
+            border-radius: 12px;
+            border: 2px solid #dcfce7;
+            transition: all 0.3s ease;
+        }
+
+        .value-card:hover {
+            border-color: #16a34a;
+            transform: translateX(8px);
+        }
+
+        .value-card h4 {
+            color: #15803d;
+            margin-bottom: 8px;
+        }
+
+        .value-card p {
+            color: #4b5563;
+        }
+
+        .stakeholder-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .stakeholder-card {
+            background: white;
+            padding: 24px;
+            border-radius: 12px;
+            border-left: 4px solid #16a34a;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .stakeholder-card:hover {
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
+            transform: translateY(-4px);
+        }
+
+        .stakeholder-card h3 {
+            color: #15803d;
+            margin-top: 0;
+            margin-bottom: 12px;
+        }
+
+        .benefits-list {
+            background: #f0fdf4;
+            padding: 16px;
+            border-radius: 8px;
+            margin-top: 12px;
+        }
+
+        .benefits-list h4 {
+            color: #166534;
+            margin-bottom: 8px;
+        }
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+            margin-top: 32px;
+        }
+
+        .tech-card {
+            background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+            padding: 24px;
+            border-radius: 12px;
+            border: 1px solid #16a34a;
+        }
+
+        .tech-card h4 {
+            color: #15803d;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .icon {
+            width: 20px;
+            height: 20px;
+            color: #16a34a;
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #064e3b 0%, #15803d 100%);
+            color: white;
+            padding: 48px 24px 24px;
+            text-align: center;
+        }
+
+        footer p {
+            margin-bottom: 8px;
+        }
+
+        footer a {
+            color: #86efac;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: #bbf7d0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                padding: 24px;
+                gap: 16px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                display: none;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav-logo-text {
+                font-size: 0.9rem;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .section-container {
+                padding: 0 16px;
+            }
+        }
+
+        .decorative {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(64px);
+            opacity: 0.2;
+            pointer-events: none;
+        }
+
+        .dec-1 {
+            top: 10%;
+            left: 5%;
+            width: 200px;
+            height: 200px;
+            background: #4ade80;
+        }
+
+        .dec-2 {
+            bottom: 10%;
+            right: 5%;
+            width: 250px;
+            height: 250px;
+            background: #34d399;
+        }
+
+        .dec-3 {
+            top: 50%;
+            right: 10%;
+            width: 150px;
+            height: 150px;
+            background: #2dd4bf;
+        }
+
+        /* Achievement Styles */
+        .achievement-card {
+            background: white;
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 24px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            border-left: 4px solid #16a34a;
+            transition: all 0.3s ease;
+        }
+
+        .achievement-card:hover {
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.1);
+            transform: translateX(8px);
+        }
+
+        .achievement-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .achievement-number {
+            background: linear-gradient(135deg, #16a34a 0%, #059669 100%);
+            color: white;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .achievement-card h3 {
+            color: #15803d;
+            margin: 0;
+        }
+
+        .partner-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+            color: #15803d;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-weight: 600;
+            margin-top: 12px;
+            border: 1px solid #16a34a;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 24px;
+            margin-top: 32px;
+        }
+
+        .stat-box {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            padding: 24px;
+            border-radius: 12px;
+            text-align: center;
+            border: 2px solid #16a34a;
+            transition: all 0.3s ease;
+        }
+
+        .stat-box:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(22, 163, 74, 0.2);
+        }
+
+        .stat-number {
+            color: #15803d;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            color: #166534;
+            font-weight: 500;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 40px;
+            margin-top: 32px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 8px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, #16a34a 0%, #059669 100%);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 32px;
+            padding-left: 24px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -32px;
+            top: 8px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #16a34a;
+            border: 3px solid white;
+            box-shadow: 0 0 0 2px #16a34a;
+        }
+
+        .timeline-date {
+            color: #059669;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .timeline-content {
+            background: white;
+            padding: 16px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+            margin-top: 32px;
+        }
+
+        .impact-card {
+            background: white;
+            padding: 24px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            border-top: 3px solid #16a34a;
+            transition: all 0.3s ease;
+        }
+
+        .impact-card:hover {
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            transform: translateY(-4px);
+        }
+
+        .impact-icon {
+            width: 40px;
+            height: 40px;
+            background: #dcfce7;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+        }
+
+        .impact-icon svg {
+            width: 24px;
+            height: 24px;
+            color: #16a34a;
+        }
+
+        .impact-card h4 {
+            color: #15803d;
+            margin-bottom: 8px;
+        }
+
+        /* Awards Styles */
+        .awards-section {
+            margin-top: 64px;
+            padding: 48px 0;
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            border-radius: 16px;
+        }
+
+        .awards-section h3 {
+            color: #15803d;
+            text-align: center;
+            margin-bottom: 16px;
+            font-size: 2rem;
+        }
+
+        .awards-section p {
+            color: #4b5563;
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .awards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            max-width: 1024px;
+            margin: 0 auto;
+        }
+
+        .award-card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            text-align: center;
+            border: 1px solid #dcfce7;
+        }
+
+        .award-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            border-color: #16a34a;
+        }
+
+        .award-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 16px;
+        }
+
+        .award-card h4 {
+            color: #15803d;
+            margin-bottom: 8px;
+        }
+
+        .award-card p {
+            color: #4b5563;
+            font-size: 0.9rem;
+        }
+
+        .hapitech-collab {
+            background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+            padding: 48px;
+            border-radius: 20px;
+            margin-top: 48px;
+            border: 2px solid #16a34a;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hapitech-collab::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(22, 163, 74, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hapitech-collab h2 {
+            color: #15803d;
+            text-align: center;
+            margin-bottom: 24px;
+            position: relative;
+        }
+
+        .hapitech-collab p {
+            text-align: center;
+            color: #166534;
+            max-width: 800px;
+            margin: 0 auto 32px;
+            position: relative;
+        }
+
+        /* Hapitech Section */
+        .hapitech-section {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            padding: 80px 24px;
+        }
+
+        /* Gallery Styles */
+        .gallery-section {
+            margin-top: 48px;
+        }
+
+        .gallery-section h2 {
+            color: #15803d;
+            margin-bottom: 16px;
+            text-align: center;
+        }
+
+        .gallery-section p {
+            color: #4b5563;
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 16px;
+            margin-top: 32px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-video {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .hapitech-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: center;
+            max-width: 1024px;
+            margin: 0 auto;
+        }
+
+        .hapitech-text h2 {
+            color: #15803d;
+            margin-bottom: 16px;
+        }
+
+        .hapitech-text p {
+            color: #4b5563;
+            margin-bottom: 16px;
+            line-height: 1.6;
+        }
+
+        .hapitech-logo-large {
+            width: 200px;
+            height: 200px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+            margin: 0 auto;
+        }
+
+        .hapitech-logo-large img {
+            width: 120px;
+            height: 120px;
+            opacity: 1.0;
+        }
+
+        .hapitech-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 24px;
+            margin-top: 32px;
+        }
+
+        .hapitech-feature {
+            background: white;
+            padding: 24px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            border: 1px solid #dcfce7;
+        }
+
+        .hapitech-feature h4 {
+            color: #15803d;
+            margin-bottom: 8px;
+        }
+
+        .hapitech-feature p {
+            color: #4b5563;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .hapitech-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hapitech-logo-large {
+                width: 150px;
+                height: 150px;
+            }
+
+            .hapitech-logo-large img {
+                width: 90px;
+                height: 90px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo" onclick="navigateTo('home')">
+                <svg class="nav-logo-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M7 20h10"/>
+                    <path d="M10 20c5.5-2.5.8-6.4 3-10"/>
+                    <path d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8z"/>
+                    <path d="M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2z"/>
+                </svg>
+                <img src="Hapitec Company Logo/Hapitec Fully Transparent.png" alt="Hapitech" class="hapitec-logo">
+                <span class="nav-logo-text">SAYA</span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a class="nav-link active" data-section="home">Home</a></li>
+                <li><a class="nav-link" data-section="about">About</a></li>
+                <li><a class="nav-link" data-section="hapitech">Hapitec Investment</a></li>
+                <li><a class="nav-link" data-section="membership">Membership</a></li>
+                <li><a class="nav-link" data-section="governance">Governance</a></li>
+                <li><a class="nav-link" data-section="stakeholders">Stakeholders</a></li>
+                <li><a class="nav-link" data-section="technology">Technology</a></li>
+                <li><a class="nav-link" data-section="achievements">Achievements</a></li>
+                <li><a class="nav-link" data-section="projects">Projects</a></li>
+            </ul>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="3" y1="12" x2="21" y2="12"/>
+                    <line x1="3" y1="6" x2="21" y2="6"/>
+                    <line x1="3" y1="18" x2="21" y2="18"/>
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home" class="section active hero-section">
+        <div class="pattern"></div>
+        <div class="hero">
+            <div class="content">
+                <div class="logo-container">
+                    <div class="logo-wrapper">
+                        <div class="logo-glow"></div>
+                        <div class="logo-circle">
+                            <svg class="logo-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M7 20h10"/>
+                                <path d="M10 20c5.5-2.5.8-6.4 3-10"/>
+                                <path d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8z"/>
+                                <path d="M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2z"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h1 class="main-title">Sustainable Agriculture Youth Alliance</h1>
+                    <div class="divider-container">
+                        <div class="divider-line"></div>
+                        <span class="acronym">SAYA</span>
+                        <div class="divider-line"></div>
+                    </div>
+                </div>
+
+                <p class="motto">"Growing Leaders. Growing Food. Growing the Future."</p>
+
+                <p class="tagline">
+                    Empowering the next generation of agricultural leaders to cultivate sustainable solutions 
+                    for a thriving planet and prosperous communities
+                </p>
+
+                <div class="buttons">
+                    <button class="btn btn-primary" onclick="navigateTo('membership')">
+                        Join Us
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M5 12h14"/>
+                            <path d="m12 5 7 7-7 7"/>
+                        </svg>
+                    </button>
+                    <button class="btn btn-outline" onclick="navigateTo('about')">Learn More</button>
+                </div>
+
+                <div class="features">
+                    <div class="feature-card">
+                        <div class="feature-icon-wrapper">
+                            <svg class="feature-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                <circle cx="9" cy="7" r="4"/>
+                                <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                            </svg>
+                        </div>
+                        <h3>Youth-Led</h3>
+                        <p>Driven by passionate young leaders committed to transforming agriculture</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon-wrapper">
+                            <svg class="feature-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M7 20h10"/>
+                                <path d="M10 20c5.5-2.5.8-6.4 3-10"/>
+                                <path d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8z"/>
+                                <path d="M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2z"/>
+                            </svg>
+                        </div>
+                        <h3>Sustainable</h3>
+                        <p>Promoting eco-friendly practices that protect our environment for future generations</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon-wrapper">
+                            <svg class="feature-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"/>
+                                <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/>
+                                <path d="M2 12h20"/>
+                            </svg>
+                        </div>
+                        <h3>Global Impact</h3>
+                        <p>Building networks across Zambia and beyond for sustainable food systems</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="decorative dec-1"></div>
+        <div class="decorative dec-2"></div>
+        <div class="decorative dec-3"></div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section content-section">
+        <div class="section-container">
+            <div class="section-header">
+                <div class="subtitle">Who We Are</div>
+                <h1>About SAYA</h1>
+                <p>A youth-driven movement transforming agriculture in Zambia and beyond</p>
+            </div>
+
+            <div class="card">
+                <h2>
+                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/>
+                        <path d="M9 18h6"/>
+                        <path d="M10 22h4"/>
+                    </svg>
+                    Our Vision
+                </h2>
+                <p>To create a generation of empowered young agricultural leaders driving sustainable development, food security, and technological innovation across Zambia and beyond.</p>
+            </div>
+
+            <div class="card">
+                <h2>
+                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                        <path d="M2 17l10 5 10-5"/>
+                        <path d="M2 12l10 5 10-5"/>
+                    </svg>
+                    Our Mission
+                </h2>
+                <p>To empower youth and farming communities through knowledge, sustainable agriculture, technology adoption, market access, entrepreneurship, and inclusive collaboration across all agricultural value chains.</p>
+            </div>
+
+            <div class="card">
+                <h2>
+                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                    </svg>
+                    Core Values
+                </h2>
+                <div class="values-grid">
+                    <div class="value-card">
+                        <h4>Sustainability</h4>
+                        <p>Promoting environmental stewardship and long-term agricultural viability</p>
+                    </div>
+                    <div class="value-card">
+                        <h4>Innovation</h4>
+                        <p>Embracing modern practices and technology-driven solutions</p>
+                    </div>
+                    <div class="value-card">
+                        <h4>Integrity</h4>
+                        <p>Ensuring transparency and accountability in all operations</p>
+                    </div>
+                    <div class="value-card">
+                        <h4>Collaboration</h4>
+                        <p>Working with farmers, government, private sector, and institutions</p>
+                    </div>
+                    <div class="value-card">
+                        <h4>Youth Empowerment</h4>
+                        <p>Building skills, leadership, and opportunities for young people</p>
+                    </div>
+                    <div class="value-card">
+                        <h4>Food Safety</h4>
+                        <p>Promoting safe, toxin-free, high-quality agricultural products</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>
+                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"/>
+                        <path d="M12 16v-4"/>
+                        <path d="M12 8h.01"/>
+                    </svg>
+                    Our Goals
+                </h2>
+                <ul>
+                    <li>Empower 10,000+ youth in sustainable agriculture by 2025</li>
+                    <li>Establish 50+ youth-led farming cooperatives across Zambia</li>
+                    <li>Implement technology-driven solutions in 100+ farming communities</li>
+                    <li>Partner with 20+ organizations for collaborative impact</li>
+                    <li>Promote food security and environmental sustainability</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hapitec Section -->
+    <section id="hapitech" class="section content-section hapitech-section">
+        <div class="section-container">
+            <div class="section-header">
+                <div class="subtitle">Our Technology Partner</div>
+                <h1>Hapitec Investment Limited</h1>
+                <p>Leading innovation in agricultural technology solutions</p>
+            </div>
+
+            <div class="hapitech-content">
+                <div class="hapitech-text">
+                    <h2>About Hapitec</h2>
+                    <p>Hapitech Investment Limited is an agricultural company specializing in high quality Pork product and Consultancy services while using digital transformation in order to improve and contribute to the economy in Zambia.</p>
+                    <p>mission statement - Our mission is to empower farmers and agricultural stakeholders with cutting-edge technology solutions that drive sustainable development and food security.</p>
+                    <p>key achievements - Founded in [year], Hapitech has successfully implemented [number] technology projects across [number] farming communities.]</p>
+
+                    <div class="hapitech-features">
+                        <div class="hapitech-feature">
+                            <h4>Agricultural Technology</h4>
+                            <p>Technology solutions - Mobile apps, IoT sensors, data analytics platforms for modern farming.</p>
+                        </div>
+                        <div class="hapitech-feature">
+                            <h4>Digital Innovation</h4>
+                            <p>Creating and creating Digital services - Market linkages, weather forecasting, crop monitoring systems</p>
+                        </div>
+                        <div class="hapitech-feature">
+                            <h4>Sustainable Farming Practices</h4>
+                            <p>Hapitec is commited to farming practices that protect the enviroment and promote long term sustainability. This includes using techniques that maximising Productivity/p>
+                            <p> </p>
+                        </div>
+                        <div class="hapitech-feature">
+                            <h4>Community Impact</h4>
+                            <p>Impact - Supporting [number] farmers with technology adoption and training programs.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hapitech-logo-large">
+                    <img src="Hapitec Company Logo/Hapitec Fully Transparent.png" alt="Hapitech Investment Limited">
+                </div>
+            </div>
+
+            <div class="card" style="margin-top: 48px;">
+                <h2>
+                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                        <circle cx="9" cy="7" r="4"/>
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                    </svg>
+                    Partnership with SAYA
+                </h2>
+                <p>[Placeholder: Describe partnership - Hapitec and SAYA collaborate to integrate technology into youth-led agricultural initiatives, providing digital tools and platforms that enhance farming productivity and market access.]</p>
+                <ul>
+                    <li>[Placeholder: Partnership benefit 1 - Technology training programs for SAYA members]</li>
+                    <li>[Placeholder: Partnership benefit 2 - Digital platform development for farmer support]</li>
+                    <li>[Placeholder: Partnership benefit 3 - Joint research and development projects]</li>
+                    <li>[Placeholder: Partnership benefit 4 - Technology adoption in sustainable agriculture]</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Membership Section -->
+    <section id="membership" class="section content-section">
+        <div class="section-container">
+            <div class="section-header">
+                <div class="subtitle">Join Our Movement</div>
+                <h1>Membership</h1>
+                <p>Become part of a growing community of young agricultural leaders</p>
+            </div>
+
+            <div class="card">
+                <h2>
+                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                        <circle cx="9" cy="7" r="4"/>
+                        <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                    </svg>
+                    Eligibility Criteria
+                </h2>
+                <ul>
+                    <li>Aged 18-35 years</li>
+                    <li>Interest in agriculture and sustainable development</li>
+                    <li>Commitment to youth empowerment and community service</li>
+                    <li>Residence in Zambia or willingness to contribute remotely</li>
+                    <li>Basic understanding of agricultural practices (training provided)</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h2>
+                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                    </svg>
+                    Membership Benefits
+                </h2>
+                <ul>
+                    <li>Access to training programs and workshops</li>
+                    <li>Networking opportunities with industry leaders</li>
+                    <li>Participation in sustainable farming projects</li>
+                    <li>Technology and innovation resources</li>
+                    <li>Leadership development and mentorship</li>
+                    <li>Certificate of membership and recognition</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Join SAYA Today</h3>
+                <p>Ready to make a difference? Apply for membership and start your journey in sustainable agriculture.</p>
+                <form class="membership-form" action="#" method="post">
+                    <div class="form-group">
+                        <label for="fullName">Full Name *</label>
+                        <input type="text" id="fullName" name="fullName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="age">Age *</label>
+                        <input type="number" id="age" name="age" min="18" max="35" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Address</label>
+                        <input type="text" id="address" name="address">
+                    </div>
+                    <div class="form-group">
+                        <label for="membershipCategory">Membership Category *</label>
+                        <select id="membershipCategory" name="membershipCategory" required>
+                            <option value="">Select a category</option>
+                            <option value="youth">Youth Member (18-25)</option>
+                            <option value="student">Student Member</option>
+                            <option value="professional">Professional Member</option>
+                            <option value="farmer">Farmer Member</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="interests">Interests / Why Join? *</label>
+                        <textarea id="interests" name="interests" rows="4" required placeholder="Tell us about your interest in sustainable agriculture..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        Submit Application
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M5 12h14"/>
+                            <path d="m12 5 7 7-7 7"/>
+                        </svg>
+                    </button>
+                </form>
+                <p style="font-size: 0.875rem; color: #6b7280; margin-top: 16px;">* Required fields. Your information will be handled securely and used only for membership processing.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Governance Section -->
+    <section id="governance" class="section content-section">
+        <div class="section-container">
+            <div class="section-header">
+                <div class="subtitle">Leadership & Structure</div>
+                <h1>Governance</h1>
+                <p>Transparent and accountable leadership driving our mission forward</p>
+            </div>
+
+            <div class="card">
+                <h2>
+                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                        <line x1="9" y1="9" x2="15" y2="9"/>
+                        <line x1="9" y1="15" x2="15" y2="15"/>
+                        <line x1="9" y1="9" x2="9" y2="15"/>
+                        <line x1="15" y1="9" x2="15" y2="15"/>
+                    </svg>
+                    Organizational Structure
+                </h2>
+                <h3>Board of Directors</h3>
+                <p>Comprised of experienced leaders in agriculture, youth development, and sustainable practices.</p>
+                <h3>Executive Committee</h3>
+                <p>Oversees day-to-day operations and strategic implementation.</p>
+                <h3>Technical Committees</h3>
+                <p>Specialized groups focusing on technology, training, and partnerships.</p>
+                <h3>Regional Chapters</h3>
+                <p>Local leadership teams across Zambia's provinces.</p>
+            </div>
+
+            <div class="card">
+                <h2>
+                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M9 12l2 2 4-4"/>
+                        <path d="M21 12c.552 0 1-.448 1-1V5c0-.552-.448-1-1-1H3c-.552 0-1 .448-1 1v6c0 .552.448 1 1 1h18z"/>
+                        <path d="M3 21h18"/>
+                    </svg>
+                    Transparency & Accountability
+                </h2>
+                <ul>
+                    <li>Annual reports and financial disclosures</li>
+                    <li>Regular stakeholder meetings and updates</li>
+                    <li>Independent audits and evaluations</li>
+                    <li>Open communication channels for members</li>
+                    <li>Ethical guidelines and code of conduct</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stakeholders Section -->
+    <section id="stakeholders" class="section content-section">
+        <div class="section-container">
+            <div class="section-header">
+                <div class="subtitle">Our Partners</div>
+                <h1>Stakeholders</h1>
+                <p>Collaborating for sustainable agricultural transformation</p>
+            </div>
+
+            <div class="stakeholder-grid">
+                <div class="stakeholder-card">
+                    <h3>
+                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M7 20h10"/>
+                            <path d="M10 20c5.5-2.5.8-6.4 3-10"/>
+                            <path d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8z"/>
+                            <path d="M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2z"/>
+                        </svg>
+                        Farmers & Communities
+                    </h3>
+                    <p>Local farming communities and smallholder farmers who benefit from our programs and provide valuable insights.</p>
+                    <div class="benefits-list">
+                        <h4>Benefits</h4>
+                        <ul>
+                            <li>Access to sustainable farming techniques</li>
+                            <li>Market linkages and fair pricing</li>
+                            <li>Technology adoption support</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="stakeholder-card">
+                    <h3>
+                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 21h18"/>
+                            <path d="M5 21V7l8-4v18"/>
+                            <path d="M19 21V11l-6-4"/>
+                            <path d="M9 9v.01"/>
+                            <path d="M9 12v.01"/>
+                            <path d="M9 15v.01"/>
+                            <path d="M9 18v.01"/>
+                        </svg>
+                        Government & Institutions
+                    </h3>
+                    <p>Government ministries, research institutions, and universities supporting policy development and research.</p>
+                    <div class="benefits-list">
+                        <h4>Benefits</h4>
+                        <ul>
+                            <li>Youth workforce development</li>
+                            <li>Policy input and implementation</li>
+                            <li>Research collaboration opportunities</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="stakeholder-card">
+                    <h3>
+                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                            <line x1="8" y1="21" x2="16" y2="21"/>
+                            <line x1="12" y1="17" x2="12" y2="21"/>
+                        </svg>
+                        Private Sector & NGOs
+                    </h3>
+                    <p>Companies and non-governmental organizations providing funding, expertise, and market access.</p>
+                    <div class="benefits-list">
+                        <h4>Benefits</h4>
+                        <ul>
+                            <li>Funding and resource mobilization</li>
+                            <li>Technology and innovation partnerships</li>
+                            <li>Market development and linkages</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="stakeholder-card">
+                    <h3>
+                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                            <circle cx="9" cy="7" r="4"/>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                        </svg>
+                        International Partners
+                    </h3>
+                    <p>Global organizations and donors supporting sustainable development initiatives in Zambia.</p>
+                    <div class="benefits-list">
+                        <h4>Benefits</h4>
+                        <ul>
+                            <li>International best practices</li>
+                            <li>Funding for large-scale projects</li>
+                            <li>Global networking opportunities</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology Section -->
+    <section id="technology" class="section content-section">
+        <div class="section-container">
+            <div class="section-header">
+                <div class="subtitle">Innovation & Tools</div>
+                <h1>Technology</h1>
+                <p>Leveraging modern solutions for sustainable agriculture</p>
+            </div>
+
+            <div class="tech-grid">
+                <div class="tech-card">
+                    <h4>
+                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                            <line x1="8" y1="21" x2="16" y2="21"/>
+                            <line x1="12" y1="17" x2="12" y2="21"/>
+                        </svg>
+                        Mobile Applications
+                    </h4>
+                    <p>Apps for crop monitoring, weather forecasting, and market information accessible to farmers.</p>
+                </div>
+
+                <div class="tech-card">
+                    <h4>
+                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M9 19v-6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2z"/>
+                            <path d="M13 19v-6a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2z"/>
+                            <path d="M17 19v-6a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2z"/>
+                            <path d="M21 19v-6a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2z"/>
+                        </svg>
+                        Data Analytics
+                    </h4>
+                    <p>AI-powered analytics for soil health, crop yield prediction, and resource optimization.</p>
+                </div>
+
+                <div class="tech-card">
+                    <h4>
+                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                        IoT Sensors
+                    </h4>
+                    <p>Smart sensors for real-time monitoring of soil moisture, temperature, and crop health.</p>
+                </div>
+
+                <div class="tech-card">
+                    <h4>
+                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                            <polyline points="22,6 12,13 2,6"/>
+                        </svg>
+                        Digital Platforms
+                    </h4>
+                    <p>Online marketplaces and knowledge-sharing platforms connecting farmers to markets and resources.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section id="achievements" class="section content-section">
+        <div class="section-container">
+            <div class="section-header">
+                <div class="subtitle">Our Impact</div>
+                <h1>Achievements</h1>
+                <p>Measuring success in sustainable agriculture and youth empowerment</p>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <div class="stat-number">2,500+</div>
+                    <div class="stat-label">Youth Trained</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Farming Communities</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">15</div>
+                    <div class="stat-label">Partner Organizations</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">30%</div>
+                    <div class="stat-label">Yield Increase</div>
+                </div>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">2020</div>
+                    <div class="timeline-content">
+                        <h4>SAYA Founded</h4>
+                        <p>Established with 50 founding members committed to youth-led agricultural transformation.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2021</div>
+                    <div class="timeline-content">
+                        <h4>First Training Programs</h4>
+                        <p>Launched sustainable farming workshops in 10 communities across Zambia.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2022</div>
+                    <div class="timeline-content">
+                        <h4>Technology Integration</h4>
+                        <p>Partnered with Hapitech to implement mobile apps for farmer support.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2023</div>
+                    <div class="timeline-content">
+                        <h4>Regional Expansion</h4>
+                        <p>Established chapters in all 10 Zambian provinces with 1,000+ active members.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="impact-grid">
+                <div class="impact-card">
+                    <div class="impact-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M7 20h10"/>
+                            <path d="M10 20c5.5-2.5.8-6.4 3-10"/>
+                            <path d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8z"/>
+                            <path d="M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2z"/>
+                        </svg>
+                    </div>
+                    <h4>Agricultural Productivity</h4>
+                    <p>Increased crop yields by 30% through sustainable practices and technology adoption.</p>
+                </div>
+
+                <div class="impact-card">
+                    <div class="impact-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                            <circle cx="9" cy="7" r="4"/>
+                            <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                        </svg>
+                    </div>
+                    <h4>Youth Employment</h4>
+                    <p>Created 500+ jobs and entrepreneurship opportunities for young people in agriculture.</p>
+                </div>
+
+                <div class="impact-card">
+                    <div class="impact-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 21h18"/>
+                            <path d="M5 21V7l8-4v18"/>
+                            <path d="M19 21V11l-6-4"/>
+                        </svg>
+                    </div>
+                    <h4>Environmental Impact</h4>
+                    <p>Reduced chemical pesticide use by 40% through organic and sustainable farming methods.</p>
+                </div>
+            </div>
+
+            <!-- Awards Section -->
+            <div class="awards-section">
+                <h3>Awards and Recognitions</h3>
+                <p>Placeholder for SAYA's prestigious awards and achievements in sustainable agriculture.</p>
+                <div class="awards-grid">
+                    <div class="award-card">
+                        <img src="images/AGRI-COOP 2025.jpg" alt="AGRI-COOP 2025 Award">
+                        <h4>AGRI-COOP 2025</h4>
+                        <p>Outstanding contribution to cooperative agriculture.</p>
+                    </div>
+                    <div class="award-card">
+                        <img src="images/AGRI-COOP ANIMAL WELFARE AWARD.jpg" alt="AGRI-COOP Animal Welfare Award">
+                        <h4>AGRI-COOP Animal Welfare Award</h4>
+                        <p>Recognition for excellence in animal welfare practices.</p>
+                    </div>
+                    <div class="award-card">
+                        <img src="images/CAMINEX 2025 BEST COMMERCIAL PIG FARMER.jpg" alt="CAMINEX 2025 Best Commercial Pig Farmer">
+                        <h4>CAMINEX 2025 Best Commercial Pig Farmer</h4>
+                        <p>Award for innovative pig farming techniques.</p>
+                    </div>
+                    <div class="award-card">
+                        <img src="images/CAMINEX 2025.jpg" alt="CAMINEX 2025">
+                        <h4>CAMINEX 2025</h4>
+                        <p>Excellence in agricultural innovation.</p>
+                    </div>
+                    <div class="award-card">
+                        <img src="images/CAMINEX AMBASSADOR.jpg" alt="CAMINEX Ambassador">
+                        <h4>CAMINEX Ambassador</h4>
+                        <p>Ambassador for agricultural excellence.</p>
+                    </div>
+                    <div class="award-card">
+                        <img src="images/CERTIFICATE OF APPRECIATION.jpg" alt="Certificate of Appreciation">
+                        <h4>Certificate of Appreciation</h4>
+                        <p>Appreciation for community impact.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section content-section">
+        <div class="section-container">
+            <div class="section-header">
+                <div class="subtitle">Our Initiatives</div>
+                <h1>Projects</h1>
+                <p>Active programs driving sustainable agricultural development</p>
+            </div>
+
+            <div class="card">
+                <h2>
+                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
+                    Youth Agricultural Leadership Program (YALP)
+                </h2>
+                <p>A comprehensive training initiative equipping young people with skills in sustainable farming, business development, and leadership. Includes hands-on training in 20 communities across Zambia.</p>
+                <span class="partner-badge">Partner: Ministry of Agriculture</span>
+            </div>
+
+            <div class="card">
+                <h2>
+                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                        <line x1="8" y1="21" x2="16" y2="21"/>
+                        <line x1="12" y1="17" x2="12" y2="21"/>
+                    </svg>
+                    Digital Farmer Platform
+                </h2>
+                <p>Mobile and web-based platform providing farmers with real-time market prices, weather information, and agricultural advice. Developed in partnership with Hapitech.</p>
+                <span class="partner-badge">Partner: Hapitech</span>
+            </div>
+
+            <div class="card">
+                <h2>
+                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M7 20h10"/>
+                        <path d="M10 20c5.5-2.5.8-6.4 3-10"/>
+                        <path d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8z"/>
+                        <path d="M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2z"/>
+                    </svg>
+                    Sustainable Maize Production Initiative
+                </h2>
+                <p>Promoting climate-resilient maize varieties and conservation agriculture practices in drought-prone areas. Targets 100 farming households with improved seed varieties and training.</p>
+                <span class="partner-badge">Partner: FAO Zambia</span>
+            </div>
+
+            <div class="hapitech-collab">
+                <h2>Strategic Partnership with Hapitech</h2>
+                <p>SAYA proudly collaborates with Hapitech, a leading technology company in Zambia, to integrate innovative solutions into our agricultural programs. Together, we're building a future where technology and tradition work hand-in-hand for sustainable development.</p>
+            </div>
+
+            <div class="gallery-section">
+                <h2>Project Gallery</h2>
+                <p>Showcasing our work, achievements, and community impact across Zambia</p>
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <img src="images/588175418_863710569501687_3861908581764984700_n.png" alt="SAYA Project Image">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/588500267_824940747127552_6569521951615129788_n.jpg" alt="SAYA Project Image">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/588501095_857362083901159_1010691211480693600_n.jpg" alt="SAYA Project Image">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/588508322_714626021242706_8903966845533510270_n.jpg" alt="SAYA Project Image">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/588534161_822404217334899_7489012855852862319_n.jpg" alt="SAYA Project Image">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/588549763_1196398269091590_2115167589575362366_n.jpg" alt="SAYA Project Image">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/588561217_895814889677900_9094463673862063155_n.jpg" alt="SAYA Project Image">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/588564469_1579630409871766_3862578400457867919_n.jpg" alt="SAYA Project Image">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/588585944_2198285420663964_7879311455197086507_n.jpg" alt="SAYA Project Image">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/588593833_2172819403128844_5784161658005665280_n.jpg" alt="SAYA Project Image">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/588624525_751848100569070_260643845824782112_n.jpg" alt="SAYA Project Image">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/588629505_1967445287156048_4351662337924002597_n.jpg" alt="SAYA Project Image">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/588631183_1160419056293341_1720300538668082460_n.jpg" alt="SAYA Project Image">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/588636937_811888124994910_4007262576841294081_n.jpg" alt="SAYA Project Image">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/588648684_803108569436723_4191574177845597142_n.jpg" alt="SAYA Project Image">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/588649789_1183528929777771_1931132066000995188_n.jpg" alt="SAYA Project Image">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/588693881_1402100728201624_2556705451086888556_n.jpg" alt="SAYA Project Image">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/588693884_1370470058074509_1720292213070171299_n.jpg" alt="SAYA Project Image">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/588717768_717484414256373_7629925319107726543_n.jpg" alt="SAYA Project Image">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/588729063_1372800214476681_8463775389515691889_n.jpg" alt="SAYA Project Image">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/588739710_1351523586468080_3420066301976779848_n.jpg" alt="SAYA Project Image">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/588753451_1896416867608297_4622966955592559002_n.jpg" alt="SAYA Project Image">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/588803005_1264955688727266_6917099144595292252_n.jpg" alt="SAYA Project Image">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/588890598_4093216950990086_3084327852174012912_n.jpg" alt="SAYA Project Image">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/588900204_868986155812895_2888501720328841225_n.jpg" alt="SAYA Project Image">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/588913425_1738414483484749_1928041514493014160_n.jpg" alt="SAYA Project Image">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/588943135_867550349143348_8833649457481055207_n.jpg" alt="SAYA Project Image">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/588962789_25255712657431206_1900673281390778063_n.jpg" alt="SAYA Project Image">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/589021093_738892825906560_9184055461180373729_n.jpg" alt="SAYA Project Image">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/589027224_2283554112113031_6217025693372419351_n.jpg" alt="SAYA Project Image">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/589030581_3246139785542935_8786054256582856851_n.jpg" alt="SAYA Project Image">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/589040026_1212228010831680_6699641473747728635_n.jpg" alt="SAYA Project Image">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/589112296_32653753550936164_1437035004795656955_n.jpg" alt="SAYA Project Image">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/589130557_785855331152007_7529946784767282144_n.jpg" alt="SAYA Project Image">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/589135126_1503327747564373_2235345761174011299_n.jpg" alt="SAYA Project Image">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/589174246_1394803788941107_6647667144278264196_n.jpg" alt="SAYA Project Image">
+                    </div>
+                    <div class="gallery-item">
+                        <video controls class="gallery-video">
+                            <source src="images/589176686_24959510067054464_4949087531408909228_n.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/589357597_1571997870463903_3342631274116178312_n.jpg" alt="SAYA Project Image">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/589394328_870640955309585_7989522953667850636_n.jpg" alt="SAYA Project Image">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/589408171_855618253642330_6598154002905749021_n.jpg" alt="SAYA Project Image">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/589512374_1360357899006579_7632220051076540314_n.jpg" alt="SAYA Project Image">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/589539501_1990197488431345_5311591826369036069_n.jpg" alt="SAYA Project Image">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/589601014_1678803926425406_4626883336498603813_n.jpg" alt="SAYA Project Image">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/589601017_1548804489870561_1224683824387757297_n.jpg" alt="SAYA Project Image">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/589606519_1445973453771750_9127724997097547219_n.jpg" alt="SAYA Project Image">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/589647934_1846322302692202_2324593715194198959_n.jpg" alt="SAYA Project Image">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/589648935_1520874759189708_3486635347694883895_n.jpg" alt="SAYA Project Image">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/589680389_838938158869731_2009901207539807481_n.jpg" alt="SAYA Project Image">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/589680389_2332614417180195_6581391081636964411_n.jpg" alt="SAYA Project Image">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/589720420_718675824134131_6334121184849957396_n.jpg" alt="SAYA Project Image">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/589762550_703735295717330_8074637352672693494_n.jpg" alt="SAYA Project Image">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/589771539_1795819394418982_5736107570104199084_n.jpg" alt="SAYA Project Image">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/589788497_1550949119687594_670218394093353820_n.jpg" alt="SAYA Project Image">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/589817778_1230984075577781_8120458165682451210_n.jpg" alt="SAYA Project Image">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/589820867_1172337431534343_5538729054998988333_n.jpg" alt="SAYA Project Image">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/589822360_1638885577303924_8283428991566438996_n.jpg" alt="SAYA Project Image">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/589872122_2047403262699164_1216152678762765791_n.jpg" alt="SAYA Project Image">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/589901369_788021627542512_3894884649677318342_n.jpg" alt="SAYA Project Image">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/589904560_1486617209901862_7717614341006821443_n.jpg" alt="SAYA Project Image">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/589924530_1154543286388377_2882200838152448980_n.jpg" alt="SAYA Project Image">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/589930707_2205528826937837_2133000710355038576_n.jpg" alt="SAYA Project Image">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/589931208_815921724600306_8827595725508502336_n.jpg" alt="SAYA Project Image">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/590199699_1160933059523243_2009894034057294196_n.jpg" alt="SAYA Project Image">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/590218683_1379831980181515_8920842998869776888_n.jpg" alt="SAYA Project Image">
+                    </div>
+                    <div class="gallery-item">
+                        <video controls class="gallery-video">
+                            <source src="images/590233012_25536822265953887_7444639313074511060_n.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/590436551_1145651147756880_6857499579061976354_n.jpg" alt="SAYA Project Image">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/590515078_4277899975831661_2596550763773776979_n.jpg" alt="SAYA Project Image">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/591184142_1325229672741072_7816504686195218395_n.jpg" alt="SAYA Project Image">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/591199611_710940348297522_2146376117674547258_n.jpg" alt="SAYA Project Image">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/591404646_824539943712394_2415328522017304615_n.jpg" alt="SAYA Project Image">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/591715760_1335318661177710_8686275056559480808_n.jpg" alt="SAYA Project Image">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/591911887_1431313038421120_1174221650727862184_n.jpg" alt="SAYA Project Image">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/AGRI-COOP 2025.jpg" alt="AGRI-COOP 2025">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/AGRI-COOP ANIMAL WELFARE AWARD.jpg" alt="AGRI-COOP ANIMAL WELFARE AWARD">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/CAMINEX 2025 BEST COMMERCIAL PIG FARMER.jpg" alt="CAMINEX 2025 BEST COMMERCIAL PIG FARMER">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/CAMINEX 2025-2.jpg" alt="CAMINEX 2025-2">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/CAMINEX 2025.jpg" alt="CAMINEX 2025">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/CAMINEX AMBASSADOR.jpg" alt="CAMINEX AMBASSADOR">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/CAMINEX FARM MANAGER.jpg" alt="CAMINEX FARM MANAGER">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/CAMINEX PRESENTATION.jpg" alt="CAMINEX PRESENTATION">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/CAMINEX WITH AMBASSADOR.jpg" alt="CAMINEX WITH AMBASSADOR">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/CAMINEX.jpg" alt="CAMINEX">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/CERTIFICATE OF APPRECIATION.jpg" alt="CERTIFICATE OF APPRECIATION">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/CSR TO KAWAMA.jpg" alt="CSR TO KAWAMA">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="section-container">
+            <p>&copy; 2024 Sustainable Agriculture Youth Alliance (SAYA). All rights reserved.</p>
+            <p>Contact us: info@saya-zambia.org | +260 123 456 789</p>
+            <p>
+                <a href="#">Privacy Policy</a> | 
+                <a href="#">Terms of Service</a> | 
+                <a href="#">Facebook</a> | 
+                <a href="#">Twitter</a> | 
+                <a href="#">LinkedIn</a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation function
+        function navigateTo(sectionId) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => section.classList.remove('active'));
+
+            // Show target section
+            const targetSection = document.getElementById(sectionId);
+            if (targetSection) {
+                targetSection.classList.add('active');
+            }
+
+            // Update navigation active state
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => link.classList.remove('active'));
+            const activeLink = document.querySelector(`[data-section="${sectionId}"]`);
+            if (activeLink) {
+                activeLink.classList.add('active');
+            }
+
+            // Close mobile menu if open
+            const navMenu = document.getElementById('navMenu');
+            if (navMenu.classList.contains('active')) {
+                navMenu.classList.remove('active');
+            }
+        }
+
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const navMenu = document.getElementById('navMenu');
+            navMenu.classList.toggle('active');
+        }
+
+        // Smooth scrolling for navigation links
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const sectionId = this.getAttribute('data-section');
+                    navigateTo(sectionId);
+                });
+            });
+
+            // Navbar hide/show on scroll
+            let lastScrollTop = 0;
+            const navbar = document.querySelector('.navbar');
+
+            window.addEventListener('scroll', function() {
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                if (scrollTop > lastScrollTop && scrollTop > 70) {
+                    navbar.classList.add('hidden');
+                } else {
+                    navbar.classList.remove('hidden');
+                }
+                lastScrollTop = scrollTop;
+            });
+        });
+    </script>
+</body>
+</html>
