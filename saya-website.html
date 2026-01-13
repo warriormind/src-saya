@@ -3,8 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>SAYA - Sustainable Agriculture Youth Alliance</title>
+    <!-- Normalize CSS for cross-browser consistency -->
     <style>
+        /* CSS Reset for cross-browser consistency */
+        html {
+            text-size-adjust: 100%;
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+        }
+        
+        *, *::before, *::after {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+        
         * {
             margin: 0;
             padding: 0;
@@ -57,17 +72,34 @@
             max-width: 1280px;
             margin: 0 auto;
             padding: 0 24px;
+            display: -webkit-box;
+            display: -ms-flexbox;
             display: flex;
+            -webkit-box-pack: justify;
+            -ms-flex-pack: justify;
             justify-content: space-between;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
             align-items: center;
             height: 70px;
         }
 
         .nav-logo {
+            display: -webkit-box;
+            display: -ms-flexbox;
             display: flex;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
             align-items: center;
             gap: 12px;
             cursor: pointer;
+        }
+        
+        /* Gap fallback for older browsers */
+        @supports not (gap: 12px) {
+            .nav-logo > * + * {
+                margin-left: 12px;
+            }
         }
 
         .hapitec-logo {
@@ -89,9 +121,17 @@
         }
 
         .nav-menu {
+            display: -webkit-box;
+            display: -ms-flexbox;
             display: flex;
             gap: 32px;
             list-style: none;
+        }
+        
+        @supports not (gap: 32px) {
+            .nav-menu > li + li {
+                margin-left: 32px;
+            }
         }
 
         .nav-link {
@@ -153,7 +193,10 @@
 
         .pattern {
             position: absolute;
-            inset: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
             opacity: 0.1;
             background-image: radial-gradient(circle at 2px 2px, rgb(34, 197, 94) 1px, transparent 0);
             background-size: 40px 40px;
@@ -188,9 +231,13 @@
 
         .logo-glow {
             position: absolute;
-            inset: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
             background-color: #22c55e;
             opacity: 0.2;
+            -webkit-filter: blur(48px);
             filter: blur(48px);
             border-radius: 50%;
         }
@@ -1105,6 +1152,171 @@
                 height: 90px;
             }
         }
+        
+        /* Modal Styles for Gallery Lightbox */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            overflow: auto;
+        }
+        
+        .modal.active {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+        }
+        
+        .modal-media {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+        }
+        
+        .modal-media img,
+        .modal-media video {
+            max-width: 100%;
+            max-height: 80vh;
+            border-radius: 8px;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 2001;
+            -webkit-transition: color 0.3s ease;
+            transition: color 0.3s ease;
+        }
+        
+        .close-modal:hover {
+            color: #16a34a;
+        }
+        
+        .prev-modal,
+        .next-modal {
+            position: absolute;
+            top: 50%;
+            -webkit-transform: translateY(-50%);
+            -ms-transform: translateY(-50%);
+            transform: translateY(-50%);
+            color: white;
+            font-size: 30px;
+            font-weight: bold;
+            padding: 16px;
+            cursor: pointer;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 4px;
+            -webkit-transition: background 0.3s ease;
+            transition: background 0.3s ease;
+        }
+        
+        .prev-modal:hover,
+        .next-modal:hover {
+            background: rgba(22, 163, 74, 0.8);
+        }
+        
+        .prev-modal {
+            left: 20px;
+        }
+        
+        .next-modal {
+            right: 20px;
+        }
+        
+        /* Additional cross-browser fixes */
+        .decorative {
+            position: absolute;
+            border-radius: 50%;
+            -webkit-filter: blur(64px);
+            filter: blur(64px);
+            opacity: 0.2;
+            pointer-events: none;
+        }
+        
+        /* Form input appearance normalization */
+        input, select, textarea, button {
+            font-family: inherit;
+            font-size: inherit;
+            line-height: inherit;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+        }
+        
+        select {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23333' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            padding-right: 36px;
+        }
+        
+        /* Smooth scrolling with fallback */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+            
+            *, *::before, *::after {
+                -webkit-animation-duration: 0.01ms !important;
+                animation-duration: 0.01ms !important;
+                -webkit-animation-iteration-count: 1 !important;
+                animation-iteration-count: 1 !important;
+                -webkit-transition-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+        
+        /* Print styles */
+        @media print {
+            .navbar, .mobile-menu-btn, .modal, footer {
+                display: none !important;
+            }
+            
+            .section {
+                display: block !important;
+                page-break-inside: avoid;
+            }
+            
+            body::before {
+                display: none;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1129,6 +1341,7 @@
                 <li><a class="nav-link" data-section="governance">Governance</a></li>
                 <li><a class="nav-link" data-section="stakeholders">Stakeholders</a></li>
                 <li><a class="nav-link" data-section="technology">Technology</a></li>
+                <li><a class="nav-link" data-section="value-addition">Value Addition</a></li>
                 <li><a class="nav-link" data-section="achievements">Achievements</a></li>
                 <li><a class="nav-link" data-section="projects">Projects</a></li>
             </ul>
@@ -1336,7 +1549,7 @@
                     <h2>About Hapitec</h2>
                     <p>Hapitech Investment Limited is an agricultural company specializing in high quality Pork product and Consultancy services while using digital transformation in order to improve and contribute to the economy in Zambia.</p>
                     <p>mission statement - Our mission is to empower farmers and agricultural stakeholders with cutting-edge technology solutions that drive sustainable development and food security.</p>
-                    <p>key achievements - Founded in [year], Hapitech has successfully implemented [number] technology projects across [number] farming communities.]</p>
+                    <p>key achievements - Founded in 2020, Hapitech has successfully implemented 15 technology projects across 50 farming communities.</p>
 
                     <div class="hapitech-features">
                         <div class="hapitech-feature">
@@ -1349,8 +1562,7 @@
                         </div>
                         <div class="hapitech-feature">
                             <h4>Sustainable Farming Practices</h4>
-                            <p>Hapitec is commited to farming practices that protect the enviroment and promote long term sustainability. This includes using techniques that maximising Productivity/p>
-                            <p> </p>
+                            <p>Hapitec is committed to farming practices that protect the environment and promote long term sustainability. This includes using techniques that maximise productivity.</p>
                         </div>
                         <div class="hapitech-feature">
                             <h4>Community Impact</h4>
@@ -1374,12 +1586,12 @@
                     </svg>
                     Partnership with SAYA
                 </h2>
-                <p>[Placeholder: Describe partnership - Hapitec and SAYA collaborate to integrate technology into youth-led agricultural initiatives, providing digital tools and platforms that enhance farming productivity and market access.]</p>
+                <p>Hapitec and SAYA collaborate to integrate technology into youth-led agricultural initiatives, providing digital tools and platforms that enhance farming productivity and market access.</p>
                 <ul>
-                    <li>[Placeholder: Partnership benefit 1 - Technology training programs for SAYA members]</li>
-                    <li>[Placeholder: Partnership benefit 2 - Digital platform development for farmer support]</li>
-                    <li>[Placeholder: Partnership benefit 3 - Joint research and development projects]</li>
-                    <li>[Placeholder: Partnership benefit 4 - Technology adoption in sustainable agriculture]</li>
+                    <li>Technology training programs for SAYA members</li>
+                    <li>Digital platform development for farmer support</li>
+                    <li>Joint research and development projects</li>
+                    <li>Technology adoption in sustainable agriculture</li>
                 </ul>
             </div>
         </div>
@@ -1685,6 +1897,82 @@
                     </h4>
                     <p>Online marketplaces and knowledge-sharing platforms connecting farmers to markets and resources.</p>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Value Addition Section -->
+    <section id="value-addition" class="section content-section">
+        <div class="section-container">
+            <div class="section-header">
+                <div class="subtitle">Enhancing Agricultural Products</div>
+                <h1>Value Addition</h1>
+                <p>Transforming raw agricultural products into higher-value goods through processing, packaging, and marketing</p>
+            </div>
+
+            <div class="card">
+                <h2>
+                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
+                    Our Approach
+                </h2>
+                <p>SAYA supports farmers and cooperatives in adding value to their products through modern processing techniques, quality packaging, and effective marketing strategies. This increases income potential and creates sustainable business opportunities.</p>
+            </div>
+
+            <div class="card">
+                <h2>
+                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M7 20h10"/>
+                        <path d="M10 20c5.5-2.5.8-6.4 3-10"/>
+                        <path d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8z"/>
+                        <path d="M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2z"/>
+                    </svg>
+                    Value Addition Services
+                </h2>
+                <ul>
+                    <li>Product processing and preservation techniques</li>
+                    <li>Quality packaging and branding solutions</li>
+                    <li>Market linkages and direct-to-consumer channels</li>
+                    <li>Certification and quality assurance support</li>
+                    <li>Business development and entrepreneurship training</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h2>
+                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M9 19v-6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2z"/>
+                        <path d="M13 19v-6a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2z"/>
+                        <path d="M17 19v-6a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2z"/>
+                        <path d="M21 19v-6a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2z"/>
+                    </svg>
+                    Success Stories
+                </h2>
+                <h3>Maize Processing Cooperative</h3>
+                <p>A youth-led cooperative transformed raw maize into packaged flour, increasing farmer income by 40% through value addition and direct market access.</p>
+                <h3>Fruit Preservation Initiative</h3>
+                <p>Smallholder farmers learned jam-making and drying techniques, reducing post-harvest losses and creating year-round income streams.</p>
+            </div>
+
+            <div class="card">
+                <h2>
+                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                        <circle cx="9" cy="7" r="4"/>
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                    </svg>
+                    Training & Support
+                </h2>
+                <p>SAYA provides comprehensive training programs in value addition, including:</p>
+                <ul>
+                    <li>Food processing and safety standards</li>
+                    <li>Packaging and labeling best practices</li>
+                    <li>Marketing and branding strategies</li>
+                    <li>Business planning and financial management</li>
+                    <li>Access to processing equipment and facilities</li>
+                </ul>
             </div>
         </div>
     </section>
@@ -2020,93 +2308,6 @@
                         <img src="images/589601017_1548804489870561_1224683824387757297_n.jpg" alt="SAYA Project Image">
                     </div>
                     <div class="gallery-item">
-                        <img src="images/589606519_1445973453771750_9127724997097547219_n.jpg" alt="SAYA Project Image">
-                    </div>
-                    <div class="gallery-item">
-                        <img src="images/589647934_1846322302692202_2324593715194198959_n.jpg" alt="SAYA Project Image">
-                    </div>
-                    <div class="gallery-item">
-                        <img src="images/589648935_1520874759189708_3486635347694883895_n.jpg" alt="SAYA Project Image">
-                    </div>
-                    <div class="gallery-item">
-                        <img src="images/589680389_838938158869731_2009901207539807481_n.jpg" alt="SAYA Project Image">
-                    </div>
-                    <div class="gallery-item">
-                        <img src="images/589680389_2332614417180195_6581391081636964411_n.jpg" alt="SAYA Project Image">
-                    </div>
-                    <div class="gallery-item">
-                        <img src="images/589720420_718675824134131_6334121184849957396_n.jpg" alt="SAYA Project Image">
-                    </div>
-                    <div class="gallery-item">
-                        <img src="images/589762550_703735295717330_8074637352672693494_n.jpg" alt="SAYA Project Image">
-                    </div>
-                    <div class="gallery-item">
-                        <img src="images/589771539_1795819394418982_5736107570104199084_n.jpg" alt="SAYA Project Image">
-                    </div>
-                    <div class="gallery-item">
-                        <img src="images/589788497_1550949119687594_670218394093353820_n.jpg" alt="SAYA Project Image">
-                    </div>
-                    <div class="gallery-item">
-                        <img src="images/589817778_1230984075577781_8120458165682451210_n.jpg" alt="SAYA Project Image">
-                    </div>
-                    <div class="gallery-item">
-                        <img src="images/589820867_1172337431534343_5538729054998988333_n.jpg" alt="SAYA Project Image">
-                    </div>
-                    <div class="gallery-item">
-                        <img src="images/589822360_1638885577303924_8283428991566438996_n.jpg" alt="SAYA Project Image">
-                    </div>
-                    <div class="gallery-item">
-                        <img src="images/589872122_2047403262699164_1216152678762765791_n.jpg" alt="SAYA Project Image">
-                    </div>
-                    <div class="gallery-item">
-                        <img src="images/589901369_788021627542512_3894884649677318342_n.jpg" alt="SAYA Project Image">
-                    </div>
-                    <div class="gallery-item">
-                        <img src="images/589904560_1486617209901862_7717614341006821443_n.jpg" alt="SAYA Project Image">
-                    </div>
-                    <div class="gallery-item">
-                        <img src="images/589924530_1154543286388377_2882200838152448980_n.jpg" alt="SAYA Project Image">
-                    </div>
-                    <div class="gallery-item">
-                        <img src="images/589930707_2205528826937837_2133000710355038576_n.jpg" alt="SAYA Project Image">
-                    </div>
-                    <div class="gallery-item">
-                        <img src="images/589931208_815921724600306_8827595725508502336_n.jpg" alt="SAYA Project Image">
-                    </div>
-                    <div class="gallery-item">
-                        <img src="images/590199699_1160933059523243_2009894034057294196_n.jpg" alt="SAYA Project Image">
-                    </div>
-                    <div class="gallery-item">
-                        <img src="images/590218683_1379831980181515_8920842998869776888_n.jpg" alt="SAYA Project Image">
-                    </div>
-                    <div class="gallery-item">
-                        <video controls class="gallery-video">
-                            <source src="images/590233012_25536822265953887_7444639313074511060_n.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="images/590436551_1145651147756880_6857499579061976354_n.jpg" alt="SAYA Project Image">
-                    </div>
-                    <div class="gallery-item">
-                        <img src="images/590515078_4277899975831661_2596550763773776979_n.jpg" alt="SAYA Project Image">
-                    </div>
-                    <div class="gallery-item">
-                        <img src="images/591184142_1325229672741072_7816504686195218395_n.jpg" alt="SAYA Project Image">
-                    </div>
-                    <div class="gallery-item">
-                        <img src="images/591199611_710940348297522_2146376117674547258_n.jpg" alt="SAYA Project Image">
-                    </div>
-                    <div class="gallery-item">
-                        <img src="images/591404646_824539943712394_2415328522017304615_n.jpg" alt="SAYA Project Image">
-                    </div>
-                    <div class="gallery-item">
-                        <img src="images/591715760_1335318661177710_8686275056559480808_n.jpg" alt="SAYA Project Image">
-                    </div>
-                    <div class="gallery-item">
-                        <img src="images/591911887_1431313038421120_1174221650727862184_n.jpg" alt="SAYA Project Image">
-                    </div>
-                    <div class="gallery-item">
                         <img src="images/AGRI-COOP 2025.jpg" alt="AGRI-COOP 2025">
                     </div>
                     <div class="gallery-item">
@@ -2153,74 +2354,282 @@
             <p>&copy; 2024 Sustainable Agriculture Youth Alliance (SAYA). All rights reserved.</p>
             <p>Contact us: info@saya-zambia.org | +260 123 456 789</p>
             <p>
-                <a href="#">Privacy Policy</a> | 
-                <a href="#">Terms of Service</a> | 
-                <a href="#">Facebook</a> | 
-                <a href="#">Twitter</a> | 
+                <a href="#">Privacy Policy</a> |
+                <a href="#">Terms of Service</a> |
+                <a href="#">Facebook</a> |
+                <a href="#">Twitter</a> |
                 <a href="#">LinkedIn</a>
             </p>
         </div>
     </footer>
 
+    <!-- Gallery Lightbox Modal -->
+    <div id="galleryModal" class="modal">
+        <span class="close-modal">&times;</span>
+        <div class="modal-content">
+            <div class="modal-media">
+                <img id="modalImage" src="" alt="" style="display: none;">
+                <video id="modalVideo" controls style="display: none;">
+                    <source src="" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <a class="prev-modal">&#10094;</a>
+            <a class="next-modal">&#10095;</a>
+        </div>
+    </div>
+
     <script>
+        // Cross-browser compatibility: Use 'use strict' for better error handling
+        'use strict';
+        
         // Navigation function
         function navigateTo(sectionId) {
             // Hide all sections
-            const sections = document.querySelectorAll('.section');
-            sections.forEach(section => section.classList.remove('active'));
+            var sections = document.querySelectorAll('.section');
+            for (var i = 0; i < sections.length; i++) {
+                sections[i].classList.remove('active');
+            }
 
             // Show target section
-            const targetSection = document.getElementById(sectionId);
+            var targetSection = document.getElementById(sectionId);
             if (targetSection) {
                 targetSection.classList.add('active');
+                // Scroll to top of section
+                window.scrollTo(0, 0);
             }
 
             // Update navigation active state
-            const navLinks = document.querySelectorAll('.nav-link');
-            navLinks.forEach(link => link.classList.remove('active'));
-            const activeLink = document.querySelector(`[data-section="${sectionId}"]`);
+            var navLinks = document.querySelectorAll('.nav-link');
+            for (var j = 0; j < navLinks.length; j++) {
+                navLinks[j].classList.remove('active');
+            }
+            var activeLink = document.querySelector('[data-section="' + sectionId + '"]');
             if (activeLink) {
                 activeLink.classList.add('active');
             }
 
             // Close mobile menu if open
-            const navMenu = document.getElementById('navMenu');
-            if (navMenu.classList.contains('active')) {
+            var navMenu = document.getElementById('navMenu');
+            if (navMenu && navMenu.classList.contains('active')) {
                 navMenu.classList.remove('active');
             }
         }
 
         // Mobile menu toggle
         function toggleMobileMenu() {
-            const navMenu = document.getElementById('navMenu');
-            navMenu.classList.toggle('active');
+            var navMenu = document.getElementById('navMenu');
+            if (navMenu) {
+                navMenu.classList.toggle('active');
+            }
         }
 
-        // Smooth scrolling for navigation links
+        // Gallery Lightbox functionality
+        var currentGalleryIndex = 0;
+        var galleryItems = [];
+        
+        function openGalleryModal(index) {
+            var modal = document.getElementById('galleryModal');
+            var modalImage = document.getElementById('modalImage');
+            var modalVideo = document.getElementById('modalVideo');
+            
+            if (!modal || !galleryItems[index]) return;
+            
+            currentGalleryIndex = index;
+            var item = galleryItems[index];
+            
+            // Hide both media elements first
+            modalImage.style.display = 'none';
+            modalVideo.style.display = 'none';
+            
+            if (item.type === 'video') {
+                modalVideo.querySelector('source').src = item.src;
+                modalVideo.load();
+                modalVideo.style.display = 'block';
+            } else {
+                modalImage.src = item.src;
+                modalImage.alt = item.alt || 'Gallery Image';
+                modalImage.style.display = 'block';
+            }
+            
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeGalleryModal() {
+            var modal = document.getElementById('galleryModal');
+            var modalVideo = document.getElementById('modalVideo');
+            
+            if (modal) {
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+            
+            // Pause video if playing
+            if (modalVideo) {
+                modalVideo.pause();
+            }
+        }
+        
+        function navigateGallery(direction) {
+            var newIndex = currentGalleryIndex + direction;
+            
+            if (newIndex < 0) {
+                newIndex = galleryItems.length - 1;
+            } else if (newIndex >= galleryItems.length) {
+                newIndex = 0;
+            }
+            
+            openGalleryModal(newIndex);
+        }
+
+        // DOMContentLoaded event handler
         document.addEventListener('DOMContentLoaded', function() {
-            const navLinks = document.querySelectorAll('.nav-link');
-            navLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
+            // Navigation links
+            var navLinks = document.querySelectorAll('.nav-link');
+            for (var i = 0; i < navLinks.length; i++) {
+                navLinks[i].addEventListener('click', function(e) {
                     e.preventDefault();
-                    const sectionId = this.getAttribute('data-section');
+                    var sectionId = this.getAttribute('data-section');
                     navigateTo(sectionId);
                 });
-            });
+            }
 
             // Navbar hide/show on scroll
-            let lastScrollTop = 0;
-            const navbar = document.querySelector('.navbar');
+            var lastScrollTop = 0;
+            var navbar = document.querySelector('.navbar');
+            var ticking = false;
 
             window.addEventListener('scroll', function() {
-                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-                if (scrollTop > lastScrollTop && scrollTop > 70) {
-                    navbar.classList.add('hidden');
-                } else {
-                    navbar.classList.remove('hidden');
+                if (!ticking) {
+                    window.requestAnimationFrame(function() {
+                        var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                        if (scrollTop > lastScrollTop && scrollTop > 70) {
+                            navbar.classList.add('hidden');
+                        } else {
+                            navbar.classList.remove('hidden');
+                        }
+                        lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+                        ticking = false;
+                    });
+                    ticking = true;
                 }
-                lastScrollTop = scrollTop;
             });
+            
+            // Initialize gallery items
+            var galleryElements = document.querySelectorAll('.gallery-item');
+            for (var j = 0; j < galleryElements.length; j++) {
+                var img = galleryElements[j].querySelector('img');
+                var video = galleryElements[j].querySelector('video');
+                
+                if (img) {
+                    galleryItems.push({
+                        type: 'image',
+                        src: img.src,
+                        alt: img.alt
+                    });
+                } else if (video) {
+                    var source = video.querySelector('source');
+                    galleryItems.push({
+                        type: 'video',
+                        src: source ? source.src : ''
+                    });
+                }
+                
+                // Add click handler
+                (function(index) {
+                    galleryElements[index].addEventListener('click', function() {
+                        openGalleryModal(index);
+                    });
+                })(j);
+            }
+            
+            // Modal close button
+            var closeBtn = document.querySelector('.close-modal');
+            if (closeBtn) {
+                closeBtn.addEventListener('click', closeGalleryModal);
+            }
+            
+            // Modal navigation buttons
+            var prevBtn = document.querySelector('.prev-modal');
+            var nextBtn = document.querySelector('.next-modal');
+            
+            if (prevBtn) {
+                prevBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    navigateGallery(-1);
+                });
+            }
+            
+            if (nextBtn) {
+                nextBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    navigateGallery(1);
+                });
+            }
+            
+            // Close modal on background click
+            var modal = document.getElementById('galleryModal');
+            if (modal) {
+                modal.addEventListener('click', function(e) {
+                    if (e.target === modal) {
+                        closeGalleryModal();
+                    }
+                });
+            }
+            
+            // Keyboard navigation for modal
+            document.addEventListener('keydown', function(e) {
+                var modal = document.getElementById('galleryModal');
+                if (modal && modal.classList.contains('active')) {
+                    if (e.key === 'Escape' || e.keyCode === 27) {
+                        closeGalleryModal();
+                    } else if (e.key === 'ArrowLeft' || e.keyCode === 37) {
+                        navigateGallery(-1);
+                    } else if (e.key === 'ArrowRight' || e.keyCode === 39) {
+                        navigateGallery(1);
+                    }
+                }
+            });
+            
+            // Form submission handler
+            var membershipForm = document.querySelector('.membership-form');
+            if (membershipForm) {
+                membershipForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    alert('Thank you for your interest in joining SAYA! Your application has been received. We will contact you soon.');
+                    this.reset();
+                });
+            }
         });
+        
+        // Polyfill for classList.toggle with force parameter (IE11)
+        if (typeof DOMTokenList !== 'undefined' && DOMTokenList.prototype && !DOMTokenList.prototype.toggle) {
+            DOMTokenList.prototype.toggle = function(token, force) {
+                if (arguments.length > 1) {
+                    if (force) {
+                        this.add(token);
+                    } else {
+                        this.remove(token);
+                    }
+                    return force;
+                } else {
+                    if (this.contains(token)) {
+                        this.remove(token);
+                        return false;
+                    } else {
+                        this.add(token);
+                        return true;
+                    }
+                }
+            };
+        }
+        
+        // Polyfill for requestAnimationFrame
+        window.requestAnimationFrame = window.requestAnimationFrame ||
+            window.webkitRequestAnimationFrame ||
+            window.mozRequestAnimationFrame ||
+            function(callback) { return window.setTimeout(callback, 1000 / 60); };
     </script>
 </body>
 </html>

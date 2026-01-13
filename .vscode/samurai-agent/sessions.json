@@ -1,0 +1,23 @@
+[
+  {
+    "id": "528fd492-5ca7-41d9-be5d-065709c6f233",
+    "title": "New Conversation",
+    "status": "active",
+    "messageCount": 0,
+    "totalTokens": 0,
+    "totalCost": 0,
+    "lastMessageAt": "2026-01-12T06:46:39.574Z",
+    "tags": [],
+    "metadata": {
+      "projectId": "default-project",
+      "model": "gemini-2.5-flash-free-tier",
+      "mode": "debugging",
+      "connectedCodebasePath": "c:\\Users\\dominic.tembo\\Desktop\\src-saya"
+    },
+    "codeContextIds": [],
+    "previous_session_intent": "pure_discussion",
+    "pinnedFilePaths": [],
+    "createdAt": "2026-01-12T06:46:39.574Z",
+    "updatedAt": "2026-01-12T06:46:39.574Z"
+  }
+]

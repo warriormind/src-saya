@@ -1,0 +1,23 @@
+{
+  "id": "project-settings",
+  "projectId": "default-project",
+  "projectName": "Untitled Project",
+  "rawProjectDetailContent": "",
+  "digestedProjectDetailContent": "",
+  "defaultModel": "gpt-4o",
+  "defaultMode": "default",
+  "customPrompts": {},
+  "projectSpecificConfig": {
+    "codeAnalysisEnabled": true,
+    "autoSpecGeneration": true,
+    "memoryRetentionDays": 30,
+    "maxTokensPerRequest": 4096
+  },
+  "theme": "auto",
+  "autoSave": true,
+  "primaryLLMModel": "gemini-2.5-flash-free-tier",
+  "currentSessionId": "528fd492-5ca7-41d9-be5d-065709c6f233",
+  "metadata": {},
+  "createdAt": "2026-01-12T06:46:39.526Z",
+  "updatedAt": "2026-01-12T06:46:39.656Z"
+}
