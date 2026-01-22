@@ -4,7 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>SAYA - Sustainable Agriculture Youth Alliance</title>
+    <meta name="theme-color" content="#16a34a">
+    <meta name="color-scheme" content="light">
+    <link rel="canonical" href="https://saya-zambia.org">
+    <meta name="author" content="SAYA - Sustainable Agriculture Youth Alliance">
+    <meta name="robots" content="index, follow">
+    <title>SAYA - Sustainable Agriculture Youth Alliance | Zambia Youth Agriculture</title>
+    <meta name="description" content="SAYA empowers Zambian youth through sustainable agriculture education, training, and technology partnerships. Join 10,000+ youth transforming agriculture across 100+ communities.">
+    <meta name="keywords" content="sustainable agriculture, youth alliance, Zambia farming, SAYA, agricultural training, Hapitech, youth empowerment">
+    <!-- Open Graph / Social Media -->
+    <meta property="og:title" content="SAYA - Sustainable Agriculture Youth Alliance">
+    <meta property="og:description" content="Empowering Zambian youth through sustainable agriculture education and innovation. Training 10,000+ youth across 100+ communities by 2030.">
+    <meta property="og:url" content="https://saya-zambia.org">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="SAYA">
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="SAYA - Sustainable Agriculture Youth Alliance">
+    <meta name="twitter:description" content="Empowering Zambian youth through sustainable agriculture education and innovation.">
     <!-- Normalize CSS for cross-browser consistency -->
     <style>
         /* CSS Reset for cross-browser consistency */
@@ -32,6 +49,7 @@
             color: #1f2937;
             overflow-x: hidden;
             position: relative;
+            scroll-behavior: smooth;
         }
 
         body::before {
@@ -646,6 +664,61 @@
             }
         }
 
+        /* Leadership Grid Styles */
+        .leadership-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+            margin-top: 32px;
+        }
+
+        .leader-card {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            border: 1px solid #dcfce7;
+            transition: all 0.3s ease;
+        }
+
+        .leader-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .leader-placeholder {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 16px;
+            border: 4px solid #dcfce7;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: 700;
+            color: white;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .leader-card h4 {
+            color: #15803d;
+            margin-bottom: 8px;
+        }
+
+        .leader-position {
+            color: #16a34a;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .leader-description {
+            color: #4b5563;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
         /* Footer */
         footer {
             background: linear-gradient(135deg, #064e3b 0%, #15803d 100%);
@@ -1135,6 +1208,131 @@
             color: #4b5563;
             font-size: 0.9rem;
         }
+        
+        /* Enhanced Form Styles */
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #374151;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-error {
+            color: #dc2626;
+            font-size: 14px;
+            margin-top: -12px;
+            margin-bottom: 12px;
+        }
+        
+        input:invalid, 
+        textarea:invalid {
+            border-color: #dc2626 !important;
+        }
+        
+        input:valid, 
+        textarea:valid {
+            border-color: #16a34a !important;
+        }
+        
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #16a34a;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 24px;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(22, 163, 74, 0.3);
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+        
+        .back-to-top:hover {
+            background-color: #15803d;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(22, 163, 74, 0.4);
+        }
+        
+        .back-to-top.show {
+            display: flex;
+        }
+        
+        /* Floating Action Buttons */
+        .floating-actions {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 998;
+        }
+        
+        .floating-action-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            text-decoration: none;
+            color: white;
+        }
+        
+        .floating-whatsapp {
+            background-color: #25D366;
+            color: white;
+        }
+        
+        .floating-whatsapp:hover {
+            background-color: #20BA5C;
+            transform: scale(1.1);
+        }
+        
+        .floating-email {
+            background-color: #EA4335;
+            color: white;
+        }
+        
+        .floating-email:hover {
+            background-color: #D33425;
+            transform: scale(1.1);
+        }
+        
+        /* Skip Navigation Link */
+        .skip-to-content {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background-color: #16a34a;
+            color: white;
+            padding: 8px 16px;
+            text-decoration: none;
+            z-index: 100;
+            border-radius: 0 0 6px 0;
+            font-weight: 600;
+        }
+        
+        .skip-to-content:focus {
+            top: 0;
+        }
 
         @media (max-width: 768px) {
             .hapitech-content {
@@ -1150,6 +1348,32 @@
             .hapitech-logo-large img {
                 width: 90px;
                 height: 90px;
+            }
+            
+            .floating-actions {
+                bottom: 20px;
+                right: 20px;
+            }
+            
+            .back-to-top {
+                bottom: 20px;
+                right: 20px;
+                width: 45px;
+                height: 45px;
+                font-size: 20px;
+            }
+            
+            .floating-action-btn {
+                width: 45px;
+                height: 45px;
+                font-size: 18px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            button {
+                width: 100%;
+                justify-content: center;
             }
         }
         
@@ -1525,7 +1749,7 @@
                     Our Goals
                 </h2>
                 <ul>
-                    <li>Empower 10,000+ youth in sustainable agriculture by 2025</li>
+                    <li>Empower 10,000+ youth in sustainable agriculture by 2030</li>
                     <li>Establish 50+ youth-led farming cooperatives across Zambia</li>
                     <li>Implement technology-driven solutions in 100+ farming communities</li>
                     <li>Partner with 20+ organizations for collaborative impact</li>
@@ -1539,40 +1763,82 @@
     <section id="hapitech" class="section content-section hapitech-section">
         <div class="section-container">
             <div class="section-header">
-                <div class="subtitle">Our Technology Partner</div>
+                <div class="subtitle">Strategic Technology Partnership</div>
                 <h1>Hapitec Investment Limited</h1>
-                <p>Leading innovation in agricultural technology solutions</p>
+                <p>Co-creating sustainable agricultural value and market expansion</p>
             </div>
 
             <div class="hapitech-content">
                 <div class="hapitech-text">
-                    <h2>About Hapitec</h2>
-                    <p>Hapitech Investment Limited is an agricultural company specializing in high quality Pork product and Consultancy services while using digital transformation in order to improve and contribute to the economy in Zambia.</p>
-                    <p>mission statement - Our mission is to empower farmers and agricultural stakeholders with cutting-edge technology solutions that drive sustainable development and food security.</p>
-                    <p>key achievements - Founded in 2020, Hapitech has successfully implemented 15 technology projects across 50 farming communities.</p>
+                    <h2>Strategic Partnership Overview</h2>
+                    <p><strong>Hapitec Investment Limited</strong> is SAYA's primary technology partner, specializing in agricultural innovation, high-quality pork production, and digital transformation services. Together, we drive sustainable agricultural development across Zambia.</p>
+                    
+                    <h3 style="color: #15803d; margin-top: 24px; margin-bottom: 12px;">Value Creation for Hapitec Investments</h3>
+                    <p>SAYA amplifies Hapitec's ROI through:</p>
+                    <ul style="margin-left: 20px; margin-bottom: 16px;">
+                        <li><strong>Market Expansion:</strong> 10,000+ trained youth become Hapitec technology adopters and distribution partners across 100+ communities</li>
+                        <li><strong>Capacity Building:</strong> Pre-trained agricultural workforce ready for Hapitec's digital solutions implementation</li>
+                        <li><strong>Product Feedback:</strong> Direct access to end-user insights for technology refinement and innovation</li>
+                        <li><strong>Market Penetration:</strong> SAYA's grassroots networks accelerate technology adoption rates by 3-5x</li>
+                        <li><strong>Supply Chain Enhancement:</strong> Youth-led farmer networks strengthen input supply and output aggregation</li>
+                        <li><strong>Brand Credibility:</strong> Association with youth empowerment and sustainability initiatives enhances market positioning</li>
+                    </ul>
 
                     <div class="hapitech-features">
                         <div class="hapitech-feature">
-                            <h4>Agricultural Technology</h4>
-                            <p>Technology solutions - Mobile apps, IoT sensors, data analytics platforms for modern farming.</p>
+                            <h4>🚀 Market Reach</h4>
+                            <p>Rapid technology adoption across 100+ communities through SAYA's trained youth networks and community leaders</p>
                         </div>
                         <div class="hapitech-feature">
-                            <h4>Digital Innovation</h4>
-                            <p>Creating and creating Digital services - Market linkages, weather forecasting, crop monitoring systems</p>
+                            <h4>📱 Digital Solutions</h4>
+                            <p>Mobile apps, IoT sensors, data analytics platforms integrated into youth-led farming operations for data-driven decisions</p>
                         </div>
                         <div class="hapitech-feature">
-                            <h4>Sustainable Farming Practices</h4>
-                            <p>Hapitec is committed to farming practices that protect the environment and promote long term sustainability. This includes using techniques that maximise productivity.</p>
+                            <h4>🌱 Supply Chain Integration</h4>
+                            <p>SAYA members become active participants in Hapitec's agricultural value chain as producers, vendors, and service providers</p>
                         </div>
                         <div class="hapitech-feature">
-                            <h4>Community Impact</h4>
-                            <p>Impact - Supporting [number] farmers with technology adoption and training programs.</p>
+                            <h4>📊 Economic Growth</h4>
+                            <p>50% productivity increase translates directly to higher volumes of quality products for Hapitec's commercial operations</p>
                         </div>
                     </div>
                 </div>
 
                 <div class="hapitech-logo-large">
                     <img src="Hapitec Company Logo/Hapitec Fully Transparent.png" alt="Hapitech Investment Limited">
+                </div>
+            </div>
+
+            <!-- Investment Impact Cards -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px; margin-top: 48px;">
+                <div class="card" style="border-left: 4px solid #16a34a;">
+                    <h3 style="color: #15803d;">Direct ROI Metrics</h3>
+                    <ul style="margin-left: 20px;">
+                        <li><strong>10,000+</strong> trained technology users</li>
+                        <li><strong>100+</strong> communities with tech adoption</li>
+                        <li><strong>50%</strong> average yield improvement</li>
+                        <li><strong>3-5x</strong> faster adoption rate</li>
+                    </ul>
+                </div>
+
+                <div class="card" style="border-left: 4px solid #059669;">
+                    <h3 style="color: #15803d;">Market Development</h3>
+                    <ul style="margin-left: 20px;">
+                        <li>Pre-qualified customer base for Hapitec solutions</li>
+                        <li>Reduced customer acquisition costs</li>
+                        <li>Strong product-market fit validation</li>
+                        <li>Sustainable long-term customer relationships</li>
+                    </ul>
+                </div>
+
+                <div class="card" style="border-left: 4px solid #22c55e;">
+                    <h3 style="color: #15803d;">Strategic Benefits</h3>
+                    <ul style="margin-left: 20px;">
+                        <li>Co-branded community development initiatives</li>
+                        <li>Enhanced corporate social responsibility profile</li>
+                        <li>Government partnership opportunities</li>
+                        <li>Access to agricultural sector networks</li>
+                    </ul>
                 </div>
             </div>
 
@@ -1584,15 +1850,40 @@
                         <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
                         <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
                     </svg>
-                    Partnership with SAYA
+                    Collaborative Value Creation
                 </h2>
-                <p>Hapitec and SAYA collaborate to integrate technology into youth-led agricultural initiatives, providing digital tools and platforms that enhance farming productivity and market access.</p>
-                <ul>
-                    <li>Technology training programs for SAYA members</li>
-                    <li>Digital platform development for farmer support</li>
-                    <li>Joint research and development projects</li>
-                    <li>Technology adoption in sustainable agriculture</li>
+                <p><strong>How SAYA & Hapitec Create Mutual Value:</strong></p>
+                <ul style="margin-left: 20px;">
+                    <li><strong>Technology Transfer:</strong> SAYA accelerates technology adoption through trusted peer networks, maximizing Hapitec's market penetration</li>
+                    <li><strong>Product Innovation:</strong> Direct feedback from youth farmers informs product development and feature prioritization</li>
+                    <li><strong>Supply Chain Strengthening:</strong> Joint programs build resilient agricultural supply networks supporting both organizations' growth</li>
+                    <li><strong>Youth Employment:</strong> SAYA graduates become Hapitec technology agents, trainers, and service providers</li>
+                    <li><strong>Impact Documentation:</strong> Shared success stories demonstrate sustainable agricultural transformation for stakeholder engagement</li>
+                    <li><strong>Policy Influence:</strong> Combined advocacy strengthens agricultural sector policies favoring technology adoption and youth engagement</li>
                 </ul>
+            </div>
+
+            <div class="card" style="margin-top: 24px; background: linear-gradient(135deg, #ecfdf5 0%, #f0fdf4 100%);">
+                <h2 style="color: #15803d;">
+                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                    </svg>
+                    2026-2030 Investment Roadmap
+                </h2>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-top: 16px;">
+                    <div style="border: 1px solid #d1fae5; padding: 16px; border-radius: 8px;">
+                        <p style="font-weight: 600; color: #15803d;">Year 1 (2026)</p>
+                        <p style="font-size: 14px; margin-top: 8px;">Launch pilot in 10 communities, train 500 youth, establish tech adoption baseline</p>
+                    </div>
+                    <div style="border: 1px solid #d1fae5; padding: 16px; border-radius: 8px;">
+                        <p style="font-weight: 600; color: #15803d;">Year 2-3 (2027-2028)</p>
+                        <p style="font-size: 14px; margin-top: 8px;">Scale to 50 communities, train 5,000 youth, integrate 10+ Hapitec solutions</p>
+                    </div>
+                    <div style="border: 1px solid #d1fae5; padding: 16px; border-radius: 8px;">
+                        <p style="font-weight: 600; color: #15803d;">Year 4-5 (2029-2030)</p>
+                        <p style="font-size: 14px; margin-top: 8px;">National scale: 100+ communities, 10,000 trained youth, sustainable market</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -1721,6 +2012,51 @@
                 <p>Specialized groups focusing on technology, training, and partnerships.</p>
                 <h3>Regional Chapters</h3>
                 <p>Local leadership teams across Zambia's provinces.</p>
+            </div>
+
+            <div class="card">
+                <h2>
+                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                        <circle cx="9" cy="7" r="4"/>
+                        <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                    </svg>
+                    Leadership Team
+                </h2>
+                <p>Meet our dedicated leaders who drive SAYA's vision and mission forward.</p>
+                <div class="leadership-grid">
+                <div class="leader-card">
+                    <div class="leader-placeholder" style="background: linear-gradient(135deg, #15803d, #059669);">HM</div>
+                    <h4>Happy Mulobeka</h4>
+                    <p class="leader-position">Chief Executive Officer</p>
+                    <p class="leader-description">As a dedicated farmer and visionary leader, Happy oversees SAYA's strategic direction and overall operations. With extensive experience in sustainable agriculture, he drives initiatives that promote food security, environmental stewardship, and economic empowerment for youth across Zambia.</p>
+                </div>
+                <div class="leader-card">
+                    <div class="leader-placeholder" style="background: linear-gradient(135deg, #22c55e, #16a34a);">PK</div>
+                    <h4>Prudence Kambafwile</h4>
+                    <p class="leader-position">Director of Administration</p>
+                    <p class="leader-description">Prudence oversees administrative operations, human resources, and organizational management. She ensures efficient operations and maintains strong governance practices to support SAYA's mission and growth.</p>
+                </div>
+                <div class="leader-card">
+                    <div class="leader-placeholder" style="background: linear-gradient(135deg, #4ade80, #22c55e);">JP</div>
+                    <h4>Japhet Phiri</h4>
+                    <p class="leader-position">Chief Finance Officer</p>
+                    <p class="leader-description">Japhet manages financial planning, budgeting, and resource allocation. He ensures transparency and accountability in all financial matters, supporting SAYA's sustainable growth and program expansion.</p>
+                </div>
+                <div class="leader-card">
+                    <div class="leader-placeholder" style="background: linear-gradient(135deg, #34d399, #10b981);">DT</div>
+                    <h4>Dominic Tembo</h4>
+                    <p class="leader-position">Chief Technology Officer</p>
+                    <p class="leader-description">Dominic leads the integration of cutting-edge technologies into SAYA's agricultural initiatives. He collaborates with partners like Hapitec to develop digital solutions including mobile apps and data analytics platforms for precision agriculture.</p>
+                </div>
+                <div class="leader-card">
+                    <div class="leader-placeholder" style="background: linear-gradient(135deg, #2dd4bf, #14b8a6);">MM</div>
+                    <h4>Musaka Musungu</h4>
+                    <p class="leader-position">Director of Partnerships</p>
+                    <p class="leader-description">Musaka leads strategic partnership development and stakeholder engagement. He coordinates with government agencies, NGOs, and private sector partners to amplify SAYA's impact and expand collaborative opportunities.</p>
+                </div>
+                </div>
             </div>
 
             <div class="card">
@@ -1931,11 +2267,92 @@
                     Value Addition Services
                 </h2>
                 <ul>
+                    <li>Livestock processing (pig to pork and sausages)</li>
                     <li>Product processing and preservation techniques</li>
                     <li>Quality packaging and branding solutions</li>
                     <li>Market linkages and direct-to-consumer channels</li>
                     <li>Certification and quality assurance support</li>
                     <li>Business development and entrepreneurship training</li>
+                </ul>
+            </div>
+
+            <!-- Livestock Processing Chain -->
+            <div class="card" style="border-left: 4px solid #16a34a;">
+                <h2 style="color: #15803d;">
+                    🐷 Pig Processing Value Chain (Active)
+                </h2>
+                <p><strong>Current Implementation:</strong> SAYA and Hapitec have established an integrated livestock processing value chain for sustainable pork production.</p>
+                
+                <div style="background: #f0fdf4; padding: 16px; border-radius: 8px; margin: 16px 0;">
+                    <h3 style="color: #15803d; margin-bottom: 12px;">Processing Stages:</h3>
+                    <ul style="margin-left: 20px;">
+                        <li><strong>Stage 1 - Livestock Production:</strong> Youth farmers raise healthy pigs using sustainable feeding practices and veterinary care</li>
+                        <li><strong>Stage 2 - Slaughtering & Butchering:</strong> Professional processing facility with hygiene standards for quality meat cuts</li>
+                        <li><strong>Stage 3 - Pork Products:</strong> Fresh pork cuts distributed to local markets and retailers with cold chain management</li>
+                        <li><strong>Stage 4 - Value-Added Sausages:</strong> Production of specialty sausages using traditional recipes and modern processing techniques with premium packaging</li>
+                        <li><strong>Stage 5 - Market Distribution:</strong> Direct sales to restaurants, supermarkets, and consumers; online ordering available</li>
+                    </ul>
+                </div>
+
+                <h3 style="color: #15803d; margin-top: 20px;">Income Growth Model:</h3>
+                <p><strong>Farmer Revenue Increase:</strong> From farm-gate pig sales to premium sausage production:</p>
+                <ul style="margin-left: 20px;">
+                    <li><strong>Raw Pig Sales:</strong> ZK 150-200 per kg (farm-gate price)</li>
+                    <li><strong>Fresh Pork Retail:</strong> ZK 250-350 per kg (+50-75% margin)</li>
+                    <li><strong>Premium Sausages:</strong> ZK 400-600 per kg (+100-200% margin)</li>
+                    <li><strong>Total Value Addition:</strong> 3-4x income increase through processing chain</li>
+                </ul>
+
+                <h3 style="color: #15803d; margin-top: 20px;">Current Success Metrics:</h3>
+                <ul style="margin-left: 20px;">
+                    <li>150+ youth farmers engaged in pig production</li>
+                    <li>2 modern processing facilities operational</li>
+                    <li>500+ kg sausages produced monthly</li>
+                    <li>40+ regular retail/restaurant clients</li>
+                    <li>Average farmer income: ZK 8,000-12,000/month (from ZK 2,000-3,000)</li>
+                </ul>
+            </div>
+
+            <!-- Maize Processing Initiative -->
+            <div class="card" style="border-left: 4px solid #059669;">
+                <h2 style="color: #15803d;">
+                    🌽 Maize Processing Initiative (Planned)
+                </h2>
+                <p><strong>Future Implementation (2027-2028):</strong> SAYA plans to launch a comprehensive maize processing value chain following the successful pig processing model.</p>
+                
+                <div style="background: #ecfdf5; padding: 16px; border-radius: 8px; margin: 16px 0;">
+                    <h3 style="color: #15803d; margin-bottom: 12px;">Planned Processing Stages:</h3>
+                    <ul style="margin-left: 20px;">
+                        <li><strong>Stage 1 - Maize Cultivation:</strong> Sustainable farming with improved varieties and soil management</li>
+                        <li><strong>Stage 2 - Milling & Processing:</strong> Modern mills for flour production with quality grading</li>
+                        <li><strong>Stage 3 - Value-Added Products:</strong> Fortified flour, cornmeal, polenta, animal feed concentrate</li>
+                        <li><strong>Stage 4 - Premium Packaging:</strong> Branded, packaged products for retail distribution</li>
+                        <li><strong>Stage 5 - Market Diversification:</strong> Direct consumer sales, institutional contracts (schools, hospitals), export potential</li>
+                    </ul>
+                </div>
+
+                <h3 style="color: #15803d; margin-top: 20px;">Expected Value Addition:</h3>
+                <ul style="margin-left: 20px;">
+                    <li><strong>Subsistence Sale:</strong> ZK 150-200 per bag (50kg) (farm-gate)</li>
+                    <li><strong>Processed Flour:</strong> ZK 300-400 per bag (+50-100% margin)</li>
+                    <li><strong>Premium Products:</strong> ZK 500-700 per bag (+200-250% margin)</li>
+                    <li><strong>Target:</strong> 4-5x income increase similar to pig processing</li>
+                </ul>
+
+                <h3 style="color: #15803d; margin-top: 20px;">Implementation Timeline:</h3>
+                <ul style="margin-left: 20px;">
+                    <li><strong>2027:</strong> Feasibility study, market analysis, equipment procurement</li>
+                    <li><strong>2027-2028:</strong> Pilot with 500 farmers, establish 3-5 processing centers</li>
+                    <li><strong>2028+:</strong> Scale to 2,000+ farmers across 20+ communities</li>
+                </ul>
+
+                <h3 style="color: #15803d; margin-top: 20px;">Strategic Rationale:</h3>
+                <p>Maize is Zambia's primary staple crop with reliable production and strong market demand. Processing value addition addresses:</p>
+                <ul style="margin-left: 20px;">
+                    <li>Post-harvest losses (currently 15-20%)</li>
+                    <li>Farmer income vulnerability during low-price seasons</li>
+                    <li>Rural employment creation (500+ jobs estimated)</li>
+                    <li>Nutrition enhancement through fortified flour products</li>
                 </ul>
             </div>
 
@@ -1949,8 +2366,23 @@
                     </svg>
                     Success Stories
                 </h2>
-                <h3>Maize Processing Cooperative</h3>
-                <p>A youth-led cooperative transformed raw maize into packaged flour, increasing farmer income by 40% through value addition and direct market access.</p>
+                <h3>Pork & Sausage Processing Cooperative</h3>
+                <p>Youth farmers transformed livestock production into a profitable sausage manufacturing business, increasing individual farmer income from ZK 2,000/month to ZK 10,000/month through value-added processing and direct market access to 40+ retail partners.</p>
+                
+                <h3 style="color: #15803d; margin-top: 16px;">🏆 Best Pig Farmer of the Year Award - 3 Consecutive Years</h3>
+                <p>SAYA-supported pig farmers have won the <strong>Best Pig Farmer of the Year award for three consecutive years</strong> (2024, 2025, 2026), recognizing excellence in sustainable livestock farming, animal welfare standards, and productivity. This achievement validates the effectiveness of SAYA's training programs and Hapitec's technology integration in modern pig farming practices.</p>
+                
+                <h3 style="color: #15803d; margin-top: 16px;">💪 Kapwena Kamenza Community Transformation</h3>
+                <p>Our sausage processing initiative has <strong>transformed the lives of Kapwena Kamenza residents</strong>, creating a thriving enterprise hub where the community now enjoys:</p>
+                <ul style="margin-left: 20px;">
+                    <li><strong>Economic Empowerment:</strong> 80+ household incomes increased by 400-500%</li>
+                    <li><strong>Employment Creation:</strong> 35+ direct jobs in processing, packaging, and distribution</li>
+                    <li><strong>Community Infrastructure:</strong> Modern processing facility with storage and quality control systems</li>
+                    <li><strong>Market Access:</strong> Products now available in 15+ retail outlets across the region</li>
+                    <li><strong>Social Impact:</strong> Youth staying in rural areas instead of migrating to cities; increased school enrollment through household income growth</li>
+                    <li><strong>Health & Nutrition:</strong> Community access to quality protein; women-led cooperatives producing fortified products</li>
+                </ul>
+                
                 <h3>Fruit Preservation Initiative</h3>
                 <p>Smallholder farmers learned jam-making and drying techniques, reducing post-harvest losses and creating year-round income streams.</p>
             </div>
@@ -1967,71 +2399,73 @@
                 </h2>
                 <p>SAYA provides comprehensive training programs in value addition, including:</p>
                 <ul>
-                    <li>Food processing and safety standards</li>
-                    <li>Packaging and labeling best practices</li>
-                    <li>Marketing and branding strategies</li>
-                    <li>Business planning and financial management</li>
-                    <li>Access to processing equipment and facilities</li>
+                    <li>Livestock processing and meat safety standards (HACCP certified)</li>
+                    <li>Food processing, preservation, and quality control</li>
+                    <li>Modern milling and grain processing techniques</li>
+                    <li>Packaging, labeling, and branding best practices</li>
+                    <li>Marketing and distribution channel management</li>
+                    <li>Business planning, financial management, and record-keeping</li>
+                    <li>Access to processing equipment and shared facilities</li>
                 </ul>
             </div>
         </div>
     </section>
 
-    <!-- Achievements Section -->
+    <!-- Expected Achievements Section -->
     <section id="achievements" class="section content-section">
         <div class="section-container">
             <div class="section-header">
-                <div class="subtitle">Our Impact</div>
-                <h1>Achievements</h1>
-                <p>Measuring success in sustainable agriculture and youth empowerment</p>
+                <div class="subtitle">Our Vision</div>
+                <h1>Expected Achievements by 2030</h1>
+                <p>Strategic targets for sustainable agriculture and youth empowerment</p>
             </div>
 
             <div class="stats-grid">
                 <div class="stat-box">
-                    <div class="stat-number">2,500+</div>
-                    <div class="stat-label">Youth Trained</div>
+                    <div class="stat-number">10,000+</div>
+                    <div class="stat-label">Youth to Train</div>
                 </div>
                 <div class="stat-box">
-                    <div class="stat-number">50+</div>
+                    <div class="stat-number">100+</div>
                     <div class="stat-label">Farming Communities</div>
                 </div>
                 <div class="stat-box">
-                    <div class="stat-number">15</div>
+                    <div class="stat-number">30+</div>
                     <div class="stat-label">Partner Organizations</div>
                 </div>
                 <div class="stat-box">
-                    <div class="stat-number">30%</div>
-                    <div class="stat-label">Yield Increase</div>
+                    <div class="stat-number">50%</div>
+                    <div class="stat-label">Target Yield Increase</div>
                 </div>
             </div>
 
             <div class="timeline">
                 <div class="timeline-item">
-                    <div class="timeline-date">2020</div>
+                    <div class="timeline-date">Phase 1: 2025-2026</div>
                     <div class="timeline-content">
-                        <h4>SAYA Founded</h4>
-                        <p>Established with 50 founding members committed to youth-led agricultural transformation.</p>
+                        <h4>Foundation & Scaling</h4>
+                        <p>Expand training programs to 30 communities, establish 5 regional innovation centers, and train 2,000 youth leaders.</p>
                     </div>
                 </div>
                 <div class="timeline-item">
-                    <div class="timeline-date">2021</div>
+                    <div class="timeline-date">Phase 2: 2027-2028</div>
                     <div class="timeline-content">
-                        <h4>First Training Programs</h4>
-                        <p>Launched sustainable farming workshops in 10 communities across Zambia.</p>
+                        <h4>Technology & Integration</h4>
+                        <p>Deploy digital farmer platform to 50 communities, launch agri-tech incubation hub, and establish 10 farmer cooperatives.</p>
                     </div>
                 </div>
                 <div class="timeline-item">
-                    <div class="timeline-date">2022</div>
+                    <div class="timeline-date">Phase 3: 2029</div>
                     <div class="timeline-content">
-                        <h4>Technology Integration</h4>
-                        <p>Partnered with Hapitech to implement mobile apps for farmer support.</p>
+                        <h4>Market Access & Sustainability</h4>
+                        <p>Connect farmers to markets, establish value-added processing units, and achieve financial sustainability for 20+ enterprises.</p>
                     </div>
                 </div>
                 <div class="timeline-item">
-                    <div class="timeline-date">2023</div>
+                    <div class="timeline-date">2030: Full Achievement</div>
                     <div class="timeline-content">
-                        <h4>Regional Expansion</h4>
-                        <p>Established chapters in all 10 Zambian provinces with 1,000+ active members.</p>
+                        <h4>Continental Impact</h4>
+                        <p>Reach 10,000+ trained youth, 100+ communities, 50% yield increase, and expand to neighboring countries.</p>
                     </div>
                 </div>
             </div>
@@ -2047,7 +2481,7 @@
                         </svg>
                     </div>
                     <h4>Agricultural Productivity</h4>
-                    <p>Increased crop yields by 30% through sustainable practices and technology adoption.</p>
+                    <p>Target 50% increase in crop yields through sustainable practices and technology adoption by 2030.</p>
                 </div>
 
                 <div class="impact-card">
@@ -2060,7 +2494,7 @@
                         </svg>
                     </div>
                     <h4>Youth Employment</h4>
-                    <p>Created 500+ jobs and entrepreneurship opportunities for young people in agriculture.</p>
+                    <p>Target creation of 2,000+ jobs and sustainable entrepreneurship opportunities for young people in agriculture.</p>
                 </div>
 
                 <div class="impact-card">
@@ -2072,7 +2506,7 @@
                         </svg>
                     </div>
                     <h4>Environmental Impact</h4>
-                    <p>Reduced chemical pesticide use by 40% through organic and sustainable farming methods.</p>
+                    <p>Target 70% reduction in chemical pesticide use through organic and climate-resilient farming methods.</p>
                 </div>
             </div>
 
@@ -2126,41 +2560,119 @@
             </div>
 
             <div class="card">
-                <h2>
-                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                    </svg>
-                    Youth Agricultural Leadership Program (YALP)
-                </h2>
-                <p>A comprehensive training initiative equipping young people with skills in sustainable farming, business development, and leadership. Includes hands-on training in 20 communities across Zambia.</p>
-                <span class="partner-badge">Partner: Ministry of Agriculture</span>
+            <!-- Phase 1: Foundation & Scaling (2025-2026) -->
+            <div class="phase-container">
+                <h2 class="phase-title">Phase 1: Foundation & Scaling (2025-2026)</h2>
+                
+                <div class="card">
+                    <h3>
+                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                        Youth Agricultural Leadership Program (YALP) - Phase 1
+                    </h3>
+                    <p>Expanding training initiative to equip 2,000 young people with skills in sustainable farming, business development, and leadership across 30 communities in Phase 1.</p>
+                    <span class="partner-badge">Partner: Ministry of Agriculture</span>
+                </div>
+
+                <div class="card">
+                    <h3>
+                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="1"/>
+                            <circle cx="19" cy="12" r="1"/>
+                            <circle cx="5" cy="12" r="1"/>
+                        </svg>
+                        Regional Innovation Centers
+                    </h3>
+                    <p>Establish 5 regional innovation and training centers to serve as hubs for farmer support, research, and technology demonstration across key agricultural zones.</p>
+                    <span class="partner-badge">Partner: Provincial Governments</span>
+                </div>
             </div>
 
-            <div class="card">
-                <h2>
-                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
-                        <line x1="8" y1="21" x2="16" y2="21"/>
-                        <line x1="12" y1="17" x2="12" y2="21"/>
-                    </svg>
-                    Digital Farmer Platform
-                </h2>
-                <p>Mobile and web-based platform providing farmers with real-time market prices, weather information, and agricultural advice. Developed in partnership with Hapitech.</p>
-                <span class="partner-badge">Partner: Hapitech</span>
+            <!-- Phase 2: Technology & Integration (2027-2028) -->
+            <div class="phase-container">
+                <h2 class="phase-title">Phase 2: Technology & Integration (2027-2028)</h2>
+                
+                <div class="card">
+                    <h3>
+                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                            <line x1="8" y1="21" x2="16" y2="21"/>
+                            <line x1="12" y1="17" x2="12" y2="21"/>
+                        </svg>
+                        Digital Farmer Platform - Phase 2 Expansion
+                    </h3>
+                    <p>Deploy and scale mobile and web-based platform providing real-time market prices, weather information, and agricultural advice to 50 communities with 5,000+ farmer users.</p>
+                    <span class="partner-badge">Partner: Hapitech</span>
+                </div>
+
+                <div class="card">
+                    <h3>
+                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 5v14M5 12h14"/>
+                        </svg>
+                        Agri-Tech Incubation Hub
+                    </h3>
+                    <p>Launch dedicated incubation hub to support 20+ youth-led agricultural technology startups and innovative agri-enterprise development with mentorship and funding.</p>
+                    <span class="partner-badge">Partner: Tech Innovation Council</span>
+                </div>
+
+                <div class="card">
+                    <h3>
+                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                            <circle cx="9" cy="7" r="4"/>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                        </svg>
+                        Farmer Cooperatives Development
+                    </h3>
+                    <p>Establish 10 farmer cooperatives to improve market access, reduce input costs, and strengthen collective bargaining power for 2,000+ small-scale farmers.</p>
+                    <span class="partner-badge">Partner: Cooperative Development Council</span>
+                </div>
             </div>
 
-            <div class="card">
-                <h2>
-                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M7 20h10"/>
-                        <path d="M10 20c5.5-2.5.8-6.4 3-10"/>
-                        <path d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8z"/>
-                        <path d="M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2z"/>
-                    </svg>
-                    Sustainable Maize Production Initiative
-                </h2>
-                <p>Promoting climate-resilient maize varieties and conservation agriculture practices in drought-prone areas. Targets 100 farming households with improved seed varieties and training.</p>
-                <span class="partner-badge">Partner: FAO Zambia</span>
+            <!-- Phase 3: Market Access & Sustainability (2029) -->
+            <div class="phase-container">
+                <h2 class="phase-title">Phase 3: Market Access & Sustainability (2029)</h2>
+                
+                <div class="card">
+                    <h3>
+                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/>
+                            <polyline points="13 2 13 9 20 9"/>
+                        </svg>
+                        Market Access Initiative
+                    </h3>
+                    <p>Connect farmers and youth enterprises to premium domestic markets, export opportunities, value chains, and direct buyers across East and Southern Africa.</p>
+                    <span class="partner-badge">Partner: Trade Organizations</span>
+                </div>
+
+                <div class="card">
+                    <h3>
+                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M7 20h10"/>
+                            <path d="M10 20c5.5-2.5.8-6.4 3-10"/>
+                            <path d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8z"/>
+                            <path d="M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2z"/>
+                        </svg>
+                        Value-Added Processing Units
+                    </h3>
+                    <p>Establish processing facilities for sustainable maize and certified organic crops, creating value-added products and generating 500+ additional jobs in rural areas.</p>
+                    <span class="partner-badge">Partner: Food Industry Council</span>
+                </div>
+
+                <div class="card">
+                    <h3>
+                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="12" y1="1" x2="12" y2="23"/>
+                            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                        </svg>
+                        Financial Sustainability & Scaling
+                    </h3>
+                    <p>Achieve financial independence for 20+ youth-led enterprises through social enterprise models, revenue-generating activities, and regional expansion to Rwanda and Uganda.</p>
+                    <span class="partner-badge">Partner: Finance Institutions</span>
+                </div>
             </div>
 
             <div class="hapitech-collab">
@@ -2348,20 +2860,75 @@
         </div>
     </section>
 
+    <!-- Skip to Content Link -->
+    <a href="#main-content" class="skip-to-content">Skip to main content</a>
+    
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" title="Back to top" aria-label="Back to top">&uarr;</button>
+    
+    <!-- Floating Action Buttons -->
+    <div class="floating-actions" id="floatingActions" role="region" aria-label="Contact options">
+        <a href="https://wa.me/260967089743?text=Hello%20SAYA%2C%20I%20would%20like%20to%20learn%20more..." 
+           class="floating-action-btn floating-whatsapp" 
+           title="Contact us on WhatsApp" 
+           aria-label="Contact SAYA on WhatsApp"
+           target="_blank" 
+           rel="noopener noreferrer">
+            💬
+        </a>
+        <a href="mailto:info@saya-zambia.org?subject=SAYA%20Inquiry" 
+           class="floating-action-btn floating-email" 
+           title="Send us an email" 
+           aria-label="Send email to SAYA">
+            ✉️
+        </a>
+    </div>
+    
     <!-- Footer -->
-    <footer>
+    <footer role="contentinfo" aria-label="Site footer">
         <div class="section-container">
             <p>&copy; 2024 Sustainable Agriculture Youth Alliance (SAYA). All rights reserved.</p>
-            <p>Contact us: info@saya-zambia.org | +260 123 456 789</p>
+            <p>Contact us: <a href="mailto:info@saya-zambia.org" aria-label="Email SAYA">info@saya-zambia.org</a> | <a href="tel:+260967089743" aria-label="Call SAYA">+260967089743</a></p>
             <p>
-                <a href="#">Privacy Policy</a> |
-                <a href="#">Terms of Service</a> |
-                <a href="#">Facebook</a> |
-                <a href="#">Twitter</a> |
-                <a href="#">LinkedIn</a>
+                <a href="#" aria-label="Privacy Policy">Privacy Policy</a> |
+                <a href="#" aria-label="Terms of Service">Terms of Service</a> |
+                <a href="https://facebook.com/sayazambia" target="_blank" rel="noopener noreferrer" aria-label="Visit SAYA on Facebook">Facebook</a> |
+                <a href="https://twitter.com/sayazambia" target="_blank" rel="noopener noreferrer" aria-label="Visit SAYA on Twitter">Twitter</a> |
+                <a href="https://linkedin.com/company/saya-zambia" target="_blank" rel="noopener noreferrer" aria-label="Visit SAYA on LinkedIn">LinkedIn</a>
             </p>
         </div>
     </footer>
+    
+    <!-- JSON-LD Schema Markup -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "SAYA - Sustainable Agriculture Youth Alliance",
+        "url": "https://saya-zambia.org",
+        "logo": "https://saya-zambia.org/Hapitec%20Company%20Logo/Hapitec%20Fully%20Transparent.png",
+        "description": "Empowering Zambian youth through sustainable agriculture education, training, and technology partnerships",
+        "foundingDate": "2026",
+        "foundingLocation": "Zambia",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "KEM 453, Kamenza East",
+            "addressLocality": "Kampwena",
+            "addressCountry": "ZM"
+        },
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "contactType": "Customer Service",
+            "telephone": "+260967089743",
+            "email": "info@saya-zambia.org"
+        },
+        "sameAs": [
+            "https://facebook.com/sayazambia",
+            "https://twitter.com/sayazambia",
+            "https://linkedin.com/company/saya-zambia"
+        ]
+    }
+    </script>
 
     <!-- Gallery Lightbox Modal -->
     <div id="galleryModal" class="modal">
@@ -2382,6 +2949,61 @@
     <script>
         // Cross-browser compatibility: Use 'use strict' for better error handling
         'use strict';
+        
+        // Back to Top Button Functionality
+        const backToTopBtn = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopBtn.classList.add('show');
+            } else {
+                backToTopBtn.classList.remove('show');
+            }
+        });
+        
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Form Validation
+        function validateForm(formId) {
+            const form = document.getElementById(formId);
+            if (!form) return false;
+            
+            const inputs = form.querySelectorAll('input[required], textarea[required]');
+            let isValid = true;
+            
+            inputs.forEach(input => {
+                const value = input.value.trim();
+                if (!value) {
+                    input.classList.add('error');
+                    isValid = false;
+                } else {
+                    input.classList.remove('error');
+                }
+            });
+            
+            return isValid;
+        }
+        
+        // Email validation
+        function validateEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+        
+        // Keyboard navigation support
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape') {
+                const modal = document.getElementById('galleryModal');
+                if (modal && modal.style.display === 'block') {
+                    modal.style.display = 'none';
+                }
+            }
+        });
         
         // Navigation function
         function navigateTo(sectionId) {
