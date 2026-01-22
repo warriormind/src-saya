@@ -3,6 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#16a34a">
+    <meta name="color-scheme" content="light">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="Hapitec Company Logo/Hapitec Fully Transparent.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="SAYA">
     <title>SAYA - Sustainable Agriculture Youth Alliance</title>
     <meta name="description" content="Empowering youth in sustainable agriculture in Zambia through innovative programs and technology partnerships.">
     <meta name="keywords" content="sustainable agriculture, youth alliance, Zambia farming, SAYA, Hapitec">
@@ -3554,6 +3561,53 @@
                     openLightbox(index);
                 });
             });
+        });
+    </script>
+
+    <!-- Service Worker Registration for Offline Support -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js')
+                    .then((registration) => {
+                        console.log('Service Worker registered successfully:', registration);
+                        setInterval(() => {
+                            registration.update();
+                        }, 60000); // Check every minute for updates
+                    })
+                    .catch((error) => {
+                        console.log('Service Worker registration failed:', error);
+                    });
+                
+                navigator.serviceWorker.addEventListener('controllerchange', () => {
+                    console.log('Service Worker updated and now controlling the page');
+                });
+            });
+        }
+
+        // Detect online/offline status
+        window.addEventListener('online', () => {
+            console.log('Back online');
+            document.body.dataset.offline = 'false';
+        });
+
+        window.addEventListener('offline', () => {
+            console.log('Gone offline');
+            document.body.dataset.offline = 'true';
+        });
+
+        // PWA Install Prompt Handler
+        let deferredPrompt;
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            // You can optionally show an "Install App" button
+            console.log('PWA can be installed');
+        });
+
+        window.addEventListener('appinstalled', () => {
+            console.log('PWA has been installed');
+            deferredPrompt = null;
         });
     </script>
 </body>

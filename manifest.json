@@ -1,0 +1,81 @@
+{
+  "name": "SAYA - Sustainable Agriculture Youth Alliance",
+  "short_name": "SAYA",
+  "description": "Empowering Zambian youth through sustainable agriculture education, training, and technology partnerships",
+  "start_url": "/saya-website.html",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#ffffff",
+  "theme_color": "#16a34a",
+  "categories": ["education", "agriculture", "social"],
+  "screenshots": [
+    {
+      "src": "Hapitec Company Logo/Hapitec Fully Transparent.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "Hapitec Company Logo/Hapitec Fully Transparent.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "icons": [
+    {
+      "src": "Hapitec Company Logo/Hapitec Fully Transparent.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "Hapitec Company Logo/Hapitec Fully Transparent.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "About SAYA",
+      "short_name": "About",
+      "description": "Learn about SAYA's mission and vision",
+      "url": "/saya-website.html?section=about",
+      "icons": [
+        {
+          "src": "Hapitec Company Logo/Hapitec Fully Transparent.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Join SAYA",
+      "short_name": "Join",
+      "description": "Become a member of SAYA",
+      "url": "/saya-website.html?section=membership",
+      "icons": [
+        {
+          "src": "Hapitec Company Logo/Hapitec Fully Transparent.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    }
+  ],
+  "share_target": {
+    "action": "/share",
+    "method": "POST",
+    "enctype": "application/x-www-form-urlencoded",
+    "params": {
+      "files": [
+        {
+          "name": "media",
+          "accept": ["image/*", "video/*"]
+        }
+      ]
+    }
+  }
+}

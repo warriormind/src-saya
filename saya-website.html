@@ -7,6 +7,11 @@
     <meta name="theme-color" content="#16a34a">
     <meta name="color-scheme" content="light">
     <link rel="canonical" href="https://saya-zambia.org">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="Hapitec Company Logo/Hapitec Fully Transparent.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="SAYA">
     <meta name="author" content="SAYA - Sustainable Agriculture Youth Alliance">
     <meta name="robots" content="index, follow">
     <title>SAYA - Sustainable Agriculture Youth Alliance | Zambia Youth Agriculture</title>
@@ -3252,6 +3257,73 @@
             window.webkitRequestAnimationFrame ||
             window.mozRequestAnimationFrame ||
             function(callback) { return window.setTimeout(callback, 1000 / 60); };
+    </script>
+
+    <!-- Service Worker Registration for Offline Support -->
+    <script>
+        // Register Service Worker for offline functionality
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js')
+                    .then((registration) => {
+                        console.log('Service Worker registered successfully:', registration);
+                        
+                        // Check for updates periodically
+                        setInterval(() => {
+                            registration.update();
+                        }, 60000); // Check every minute
+                    })
+                    .catch((error) => {
+                        console.log('Service Worker registration failed:', error);
+                    });
+            });
+
+            // Handle Service Worker updates
+            navigator.serviceWorker.addEventListener('controller-change', () => {
+                console.log('Service Worker updated');
+                // Optionally notify user about update
+            });
+        }
+
+        // PWA Install Prompt Handler
+        let deferredPrompt;
+        const installButton = document.getElementById('installButton');
+
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            // Show install button if available
+            if (installButton) {
+                installButton.style.display = 'block';
+            }
+        });
+
+        if (installButton) {
+            installButton.addEventListener('click', async () => {
+                if (deferredPrompt) {
+                    deferredPrompt.prompt();
+                    const { outcome } = await deferredPrompt.userChoice;
+                    console.log(`User response: ${outcome}`);
+                    deferredPrompt = null;
+                }
+            });
+        }
+
+        // Detect offline/online status
+        window.addEventListener('online', () => {
+            console.log('Application is online');
+            document.body.classList.remove('offline-mode');
+        });
+
+        window.addEventListener('offline', () => {
+            console.log('Application is offline - using cached content');
+            document.body.classList.add('offline-mode');
+        });
+
+        // Check initial connection status
+        if (!navigator.onLine) {
+            document.body.classList.add('offline-mode');
+        }
     </script>
 </body>
 </html>
