@@ -182,6 +182,75 @@
             border-radius: 2px;
         }
 
+        /* Dropdown Menu Styles */
+        .nav-item-dropdown {
+            position: relative;
+        }
+
+        .dropdown-toggle {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+        }
+
+        .dropdown-toggle svg {
+            width: 16px;
+            height: 16px;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-item-dropdown.active .dropdown-toggle svg {
+            transform: rotate(180deg);
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            border: 1px solid #dcfce7;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            min-width: 200px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            margin-top: 8px;
+            z-index: 1000;
+        }
+
+        .nav-item-dropdown.active .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 12px 16px;
+            color: #374151;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border-left: 3px solid transparent;
+        }
+
+        .dropdown-menu a:hover {
+            background: #f0fdf4;
+            color: #16a34a;
+            border-left-color: #16a34a;
+        }
+
+        .dropdown-menu a:first-child {
+            border-radius: 8px 8px 0 0;
+        }
+
+        .dropdown-menu a:last-child {
+            border-radius: 0 0 8px 8px;
+        }
+
         .mobile-menu-btn {
             display: none;
             background: none;
@@ -745,8 +814,181 @@
             color: #bbf7d0;
         }
 
+        /* News Section Styles */
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 32px;
+            margin-top: 48px;
+        }
+
+        .news-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .news-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        .news-image {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            background: #f0fdf4;
+        }
+
+        .news-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .news-card:hover .news-image img {
+            transform: scale(1.05);
+        }
+
+        .news-content {
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .news-date {
+            color: #059669;
+            font-weight: 600;
+            font-size: 0.875rem;
+            margin-bottom: 8px;
+        }
+
+        .news-card h3 {
+            color: #15803d;
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+
+        .news-card p {
+            color: #4b5563;
+            margin-bottom: 12px;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .news-excerpt {
+            font-style: italic;
+            color: #6b7280;
+            margin-bottom: 16px !important;
+        }
+
+        .read-more {
+            color: #16a34a;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            margin-top: auto;
+            transition: all 0.3s ease;
+        }
+
+        .read-more:hover {
+            color: #15803d;
+            transform: translateX(4px);
+        }
+
+        /* FAQ Section Styles */
+        .faq-container {
+            max-width: 900px;
+            margin: 48px auto 0;
+        }
+
+        .faq-item {
+            background: white;
+            border-radius: 12px;
+            margin-bottom: 16px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .faq-question {
+            width: 100%;
+            padding: 24px;
+            background: white;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #15803d;
+            transition: all 0.3s ease;
+            text-align: left;
+        }
+
+        .faq-question:hover {
+            background: #f0fdf4;
+        }
+
+        .faq-question svg {
+            width: 24px;
+            height: 24px;
+            flex-shrink: 0;
+            transition: transform 0.3s ease;
+            color: #16a34a;
+        }
+
+        .faq-item.active .faq-question svg {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            background: #f9fdfb;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 1000px;
+        }
+
+        .faq-answer p {
+            padding: 24px;
+            color: #4b5563;
+            line-height: 1.8;
+            margin: 0;
+        }
+
+        .faq-answer p + p {
+            border-top: 1px solid #dcfce7;
+            padding-top: 24px;
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
+            .news-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .news-image {
+                height: 150px;
+            }
+
             .nav-menu {
                 position: fixed;
                 top: 70px;
@@ -1573,6 +1815,19 @@
                 <li><a class="nav-link" data-section="value-addition">Value Addition</a></li>
                 <li><a class="nav-link" data-section="achievements">Achievements</a></li>
                 <li><a class="nav-link" data-section="projects">Projects</a></li>
+                <li class="nav-item-dropdown">
+                    <a class="nav-link dropdown-toggle" onclick="toggleDropdown(event)">
+                        More
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </a>
+                    <div class="dropdown-menu">
+                        <a href="#faq" onclick="navigateTo('faq'); closeDropdown();">FAQ</a>
+                        <a href="#news" onclick="navigateTo('news'); closeDropdown();">News</a>
+                        <a href="#events" onclick="navigateTo('events'); closeDropdown();">Events</a>
+                    </div>
+                </li>
             </ul>
             <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -2889,6 +3144,244 @@
         </a>
     </div>
     
+    <!-- FAQ Section -->
+    <section id="faq" class="section content-section">
+        <div class="section-container">
+            <div class="section-header">
+                <div class="subtitle">Your Questions Answered</div>
+                <h1>Frequently Asked Questions</h1>
+                <p>Find answers to common questions about SAYA, membership, programs, and more</p>
+            </div>
+
+            <div class="faq-container">
+                <!-- FAQ Item 1 -->
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <span>What is SAYA and what does it stand for?</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>SAYA stands for Sustainable Agriculture Youth Alliance. We are a youth-driven movement focused on empowering young leaders to transform agriculture through sustainable practices, technology adoption, and community engagement across Zambia and beyond.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <span>Who can become a member of SAYA?</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Anyone aged 18-35 years with an interest in agriculture and sustainable development can join SAYA. We welcome youth from all backgrounds including farmers, students, professionals, and anyone committed to youth empowerment and community service. Basic understanding of agricultural practices is helpful but not required - we provide training.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <span>What are the membership benefits?</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>SAYA members enjoy access to training programs and workshops, networking opportunities with industry leaders, participation in sustainable farming projects, technology and innovation resources, leadership development and mentorship, and certificate of membership with recognition. Members also get priority access to new initiatives and community outreach activities.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 4 -->
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <span>How is SAYA governed?</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>SAYA operates under transparent and accountable leadership. Our governance structure includes a Board of Directors composed of experienced leaders in agriculture and sustainable development, an Executive Committee that oversees operations, specialized Technical Committees focusing on technology and training, and Regional Chapters in various provinces to ensure local representation and community engagement.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 5 -->
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <span>What training programs does SAYA offer?</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>SAYA offers comprehensive training in sustainable farming techniques, business development and entrepreneurship, leadership skills, technology adoption and digital tools, market linkages and value addition, cooperative formation and management, and environmental sustainability practices. Our Youth Agricultural Leadership Program (YALP) is our flagship training initiative combining theory with hands-on experience.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 6 -->
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <span>How is SAYA funded?</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>SAYA is funded through strategic partnerships with organizations like the Ministry of Agriculture, development agencies, private sector partners including Hapitec Investment Limited, grants from agricultural development programs, and member contributions. All funding is managed transparently and dedicated to advancing our mission of youth empowerment and sustainable agriculture.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 7 -->
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <span>What is the partnership between SAYA and Hapitec?</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>SAYA has formalized a strategic partnership with Hapitec Investment Limited to integrate cutting-edge agricultural technology into youth-led initiatives. This collaboration includes joint development of mobile applications, IoT sensor networks, and data analytics platforms. Hapitec provides technology training, digital tools, and market linkage support to SAYA members, accelerating adoption of precision agriculture and sustainable farming practices.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 8 -->
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <span>How can I apply for membership?</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>You can apply for SAYA membership through our website membership application form. Simply fill out the form with your personal details, select your membership category (Youth, Student, Professional, or Farmer), and explain your interest in sustainable agriculture. Once submitted, our team will review your application and contact you within 2-3 business days. Visit our Membership section to get started.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 9 -->
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <span>Where are SAYA chapters located?</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>SAYA has regional chapters across multiple provinces in Zambia, with our flagship chapter in Chililabombwe launched in January 2025. We are actively expanding our presence across the country as part of our five-year expansion plan. Our chapters serve as hubs for training programs, technology adoption, and community outreach. Contact us to find the chapter nearest to you or to explore opportunities in your area.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 10 -->
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <span>What is the WYEEFIMA project?</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>WYEEFIMA is a LATTICE-facilitated project aimed at empowering women, youths, people with disabilities, and fish traders in aquaculture. The project provides fingerlings, fish feed, training, and market access support to expand fish farming opportunities. Through partnerships with organizations like HAPITEC INVESTMENTS LTD, WYEEFIMA helps youth establish sustainable aquaculture enterprises and linkages to broader agricultural networks.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 11 -->
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <span>How can organizations partner with SAYA?</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>SAYA welcomes strategic partnerships with government agencies, NGOs, private sector companies, educational institutions, and development organizations. We seek partners who share our commitment to sustainable agriculture and youth empowerment. Partnership opportunities include training collaboration, technology integration, resource provision, market linkage support, and joint project implementation. Contact our partnership team at info@saya-zambia.org to discuss collaboration possibilities.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 12 -->
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <span>How can I stay updated on SAYA news and events?</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Stay informed by visiting our News section regularly for the latest updates on initiatives and partnerships, following us on social media (Facebook, Twitter, LinkedIn), subscribing to our newsletter through the website, attending our public events and webinars, or contacting us directly at info@saya-zambia.org or +260967089743. Members receive priority notifications about new programs and opportunities.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- News Section -->
+    <section id="news" class="section content-section">
+        <div class="section-container">
+            <div class="section-header">
+                <div class="subtitle">Latest Updates</div>
+                <h1>News</h1>
+                <p>Stay informed about SAYA's latest initiatives, partnerships, and youth empowerment programs</p>
+            </div>
+
+            <div class="news-grid">
+                <!-- News Article 1 -->
+                <div class="news-card">
+                    <div class="news-image">
+                        <img src="images/588175418_863710569501687_3861908581764984700_n.png" alt="Aquaculture Youth Empowerment">
+                    </div>
+                    <div class="news-content">
+                        <div class="news-date">December 17, 2025</div>
+                        <h3>Major Visitors Advance Aquaculture Youth Empowerment</h3>
+                        <p>Yesterday, we had the rare privilege of receiving major visitors in the area of agriculture feed supply and aquaculture youth empowerment. Our first visitor was the LATICE PROJECT COORDINATOR, Mr. Francis, who came to fulfill the WYEEFIMA PROJECT commitment by providing 3,000 Tilapia fingerlings and 28 bags of fish feed to 20 youths through HAPITEC INVESTMENTS LTD and its directors.</p>
+                        <p class="news-excerpt">This initiative is entirely facilitated by LATTICE under a project called WYEEFIMA, which aims to empower women, youths, people with disabilities, and other fish traders.</p>
+                        <a href="#" class="read-more">Read More →</a>
+                    </div>
+                </div>
+
+                <!-- News Article 2 -->
+                <div class="news-card">
+                    <div class="news-image">
+                        <img src="images/588500267_824940747127552_6569521951615129788_n.jpg" alt="SAYA Launch Event">
+                    </div>
+                    <div class="news-content">
+                        <div class="news-date">January 15, 2025</div>
+                        <h3>SAYA Launches Flagship Chapter in Chililabombwe</h3>
+                        <p>SAYA has officially launched its flagship chapter in Chililabombwe, marking the beginning of our five-year expansion plan across Zambia. The launch event brought together over 200 youth leaders, farmers, and stakeholders to celebrate this milestone in sustainable agriculture development.</p>
+                        <p class="news-excerpt">The chapter will serve as a hub for training programs, technology adoption, and community outreach initiatives in the Copperbelt region.</p>
+                        <a href="#" class="read-more">Read More →</a>
+                    </div>
+                </div>
+
+                <!-- News Article 3 -->
+                <div class="news-card">
+                    <div class="news-image">
+                        <img src="images/588501095_857362083901159_1010691211480693600_n.jpg" alt="SAYA-Hapitec Partnership">
+                    </div>
+                    <div class="news-content">
+                        <div class="news-date">February 3, 2025</div>
+                        <h3>Partnership with Hapitec Strengthens Technology Integration</h3>
+                        <p>SAYA and Hapitec Investment Limited have formalized their strategic partnership, combining SAYA's youth-led initiatives with Hapitec's cutting-edge agricultural technology solutions. This collaboration will accelerate the adoption of digital tools across Zambian farming communities.</p>
+                        <p class="news-excerpt">The partnership includes joint development of mobile applications, IoT sensor networks, and data analytics platforms to support precision agriculture.</p>
+                        <a href="#" class="read-more">Read More →</a>
+                    </div>
+                </div>
+
+                <!-- News Article 4 -->
+                <div class="news-card">
+                    <div class="news-image">
+                        <img src="images/588508322_714626021242706_8903966845533510270_n.jpg" alt="Youth Agricultural Leadership Program">
+                    </div>
+                    <div class="news-content">
+                        <div class="news-date">February 20, 2025</div>
+                        <h3>Youth Agricultural Leadership Program Kicks Off</h3>
+                        <p>The first cohort of SAYA's Youth Agricultural Leadership Program (YALP) has begun training sessions in Chililabombwe. Fifty young leaders are participating in intensive workshops covering sustainable farming techniques, business development, and leadership skills.</p>
+                        <p class="news-excerpt">The program, supported by the Ministry of Agriculture, aims to equip participants with knowledge and tools needed to establish successful agricultural cooperatives.</p>
+                        <a href="#" class="read-more">Read More →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer role="contentinfo" aria-label="Site footer">
         <div class="section-container">
@@ -3051,6 +3544,43 @@
             }
         }
 
+        // Dropdown menu toggle
+        function toggleDropdown(event) {
+            event.preventDefault();
+            var dropdownItem = event.target.closest('.nav-item-dropdown');
+            if (dropdownItem) {
+                dropdownItem.classList.toggle('active');
+            }
+        }
+
+        // Close dropdown menu
+        function closeDropdown() {
+            var dropdownItem = document.querySelector('.nav-item-dropdown.active');
+            if (dropdownItem) {
+                dropdownItem.classList.remove('active');
+            }
+        }
+
+        // FAQ toggle function
+        function toggleFAQ(button) {
+            var faqItem = button.closest('.faq-item');
+            var isActive = faqItem.classList.contains('active');
+            
+            // Close all other FAQ items
+            document.querySelectorAll('.faq-item.active').forEach(function(item) {
+                if (item !== faqItem) {
+                    item.classList.remove('active');
+                }
+            });
+            
+            // Toggle current item
+            if (isActive) {
+                faqItem.classList.remove('active');
+            } else {
+                faqItem.classList.add('active');
+            }
+        }
+
         // Gallery Lightbox functionality
         var currentGalleryIndex = 0;
         var galleryItems = [];
@@ -3116,11 +3646,21 @@
             var navLinks = document.querySelectorAll('.nav-link');
             for (var i = 0; i < navLinks.length; i++) {
                 navLinks[i].addEventListener('click', function(e) {
-                    e.preventDefault();
-                    var sectionId = this.getAttribute('data-section');
-                    navigateTo(sectionId);
+                    if (!this.classList.contains('dropdown-toggle')) {
+                        e.preventDefault();
+                        var sectionId = this.getAttribute('data-section');
+                        navigateTo(sectionId);
+                    }
                 });
             }
+
+            // Close dropdown when clicking outside
+            document.addEventListener('click', function(e) {
+                var dropdownItem = document.querySelector('.nav-item-dropdown.active');
+                if (dropdownItem && !dropdownItem.contains(e.target)) {
+                    dropdownItem.classList.remove('active');
+                }
+            });
 
             // Navbar hide/show on scroll
             var lastScrollTop = 0;
