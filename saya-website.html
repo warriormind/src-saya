@@ -978,6 +978,169 @@
             padding-top: 24px;
         }
 
+        /* CSR Section Styles */
+        .csr-section {
+            margin-top: 64px;
+            padding: 48px 0;
+            background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%);
+            border-radius: 16px;
+            padding-left: 48px;
+            padding-right: 48px;
+        }
+
+        .csr-section h2 {
+            color: #15803d;
+            text-align: center;
+            margin-bottom: 16px;
+            font-size: 2rem;
+        }
+
+        .csr-section > p {
+            text-align: center;
+            color: #4b5563;
+            margin-bottom: 48px;
+            font-size: 1.05rem;
+        }
+
+        .csr-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 32px;
+            margin-bottom: 48px;
+        }
+
+        .csr-card {
+            background: white;
+            border-radius: 16px;
+            padding: 32px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            border-left: 4px solid #16a34a;
+            transition: all 0.3s ease;
+        }
+
+        .csr-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+        }
+
+        .csr-icon {
+            width: 64px;
+            height: 64px;
+            background: #dcfce7;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+        }
+
+        .csr-icon svg {
+            width: 32px;
+            height: 32px;
+            color: #16a34a;
+        }
+
+        .csr-card h3 {
+            color: #15803d;
+            margin-bottom: 16px;
+            font-size: 1.3rem;
+        }
+
+        .csr-card p {
+            color: #4b5563;
+            margin-bottom: 16px;
+            line-height: 1.6;
+        }
+
+        .csr-benefits {
+            list-style: none;
+            padding: 0;
+            margin: 16px 0;
+            background: #f0fdf4;
+            padding: 16px;
+            border-radius: 8px;
+        }
+
+        .csr-benefits li {
+            padding: 8px 0 8px 24px;
+            position: relative;
+            color: #4b5563;
+        }
+
+        .csr-benefits li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #16a34a;
+            font-weight: 700;
+        }
+
+        .csr-impact {
+            background: #ecfdf5;
+            padding: 12px;
+            border-radius: 8px;
+            border-left: 3px solid #16a34a;
+            font-size: 0.95rem;
+            margin-top: 16px !important;
+        }
+
+        .donation-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            margin: 12px 0;
+            box-shadow: 0 2px 4px rgba(22, 163, 74, 0.3);
+        }
+
+        .csr-goals {
+            background: white;
+            padding: 48px;
+            border-radius: 16px;
+            margin-top: 48px;
+        }
+
+        .csr-goals h3 {
+            color: #15803d;
+            text-align: center;
+            margin-bottom: 32px;
+            font-size: 1.5rem;
+        }
+
+        .goals-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+        }
+
+        .goal-item {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            padding: 24px;
+            border-radius: 12px;
+            border: 1px solid #bbf7d0;
+            transition: all 0.3s ease;
+        }
+
+        .goal-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 16px rgba(22, 163, 74, 0.15);
+        }
+
+        .goal-item h4 {
+            color: #15803d;
+            margin-bottom: 12px;
+        }
+
+        .goal-item p {
+            color: #4b5563;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin: 0;
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             .news-grid {
@@ -2938,6 +3101,78 @@
             <div class="Hapitec-collab">
                 <h2>Strategic Partnership with Hapitec</h2>
                 <p>SAYA proudly collaborates with Hapitec, a leading technology company in Zambia, to integrate innovative solutions into our agricultural programs. Together, we're building a future where technology and tradition work hand-in-hand for sustainable development.</p>
+            </div>
+
+            <!-- CSR Initiatives Section -->
+            <div class="csr-section">
+                <h2>Corporate Social Responsibility Initiatives</h2>
+                <p>SAYA is committed to giving back to communities through strategic CSR ventures focused on education and youth development</p>
+                
+                <div class="csr-grid">
+                    <!-- CSR Initiative 1 -->
+                    <div class="csr-card">
+                        <div class="csr-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 2L15 10H23L17 15L19 23L12 18L5 23L7 15L1 10H9L12 2Z"></path>
+                            </svg>
+                        </div>
+                        <h3>Eden Community School</h3>
+                        <p>SAYA has launched a comprehensive CSR program at Eden Community School, focusing on agricultural education, youth skills development, and sustainability practices. Our initiatives include:</p>
+                        <div class="donation-badge">📚 Donated Learning Materials</div>
+                        <ul class="csr-benefits">
+                            <li>Learning materials donation to support students</li>
+                            <li>Agricultural training and school gardens establishment</li>
+                            <li>Capacity building for teachers and students</li>
+                            <li>Technology adoption in learning</li>
+                            <li>Vocational skills training for sustainable livelihoods</li>
+                            <li>Community engagement and partnerships</li>
+                        </ul>
+                        <p class="csr-impact"><strong>Impact:</strong> Empowering students with practical agricultural knowledge and educational resources for future employment and self-reliance.</p>
+                    </div>
+
+                    <!-- CSR Initiative 2 -->
+                    <div class="csr-card">
+                        <div class="csr-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 2L15 10H23L17 15L19 23L12 18L5 23L7 15L1 10H9L12 2Z"></path>
+                            </svg>
+                        </div>
+                        <h3>Kawama Secondary School</h3>
+                        <p>SAYA's CSR venture at Kawama Secondary School aims to support student health and well-being while integrating sustainable agriculture into the secondary school curriculum. Key components include:</p>
+                        <div class="donation-badge">🏥 Donated Sanitary Towels</div>
+                        <ul class="csr-benefits">
+                            <li>Sanitary towels donation supporting menstrual health and school attendance</li>
+                            <li>Sustainable farming demonstration plots</li>
+                            <li>Youth agricultural club establishment and mentorship</li>
+                            <li>Environmental conservation education</li>
+                            <li>Leadership development programs</li>
+                            <li>Career pathways in agriculture and agribusiness</li>
+                        </ul>
+                        <p class="csr-impact"><strong>Impact:</strong> Supporting female student health, improving school attendance, and creating ambassadors for sustainable agriculture among secondary students.</p>
+                    </div>
+                </div>
+
+                <div class="csr-goals">
+                    <h3>CSR Goals & Objectives</h3>
+                    <div class="goals-grid">
+                        <div class="goal-item">
+                            <h4>Educational Impact</h4>
+                            <p>Integrate agriculture into school curricula and reach 500+ students with practical sustainable farming knowledge</p>
+                        </div>
+                        <div class="goal-item">
+                            <h4>Youth Empowerment</h4>
+                            <p>Develop leadership skills and create pathways for youth to establish agricultural enterprises</p>
+                        </div>
+                        <div class="goal-item">
+                            <h4>Community Development</h4>
+                            <p>Strengthen community ties through school-based initiatives that benefit local farming families</p>
+                        </div>
+                        <div class="goal-item">
+                            <h4>Environmental Stewardship</h4>
+                            <p>Promote climate-smart agriculture and conservation practices among young people</p>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div class="gallery-section">
