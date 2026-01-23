@@ -1096,6 +1096,30 @@
             box-shadow: 0 2px 4px rgba(22, 163, 74, 0.3);
         }
 
+        .csr-image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 12px;
+            margin: 16px 0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .csr-gallery-img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .csr-gallery-img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(22, 163, 74, 0.3);
+        }
+
         .csr-goals {
             background: white;
             padding: 48px;
@@ -3119,6 +3143,11 @@
                         <h3>Eden Community School</h3>
                         <p>SAYA has launched a comprehensive CSR program at Eden Community School, focusing on agricultural education, youth skills development, and sustainability practices. Our initiatives include:</p>
                         <div class="donation-badge">📚 Donated Learning Materials</div>
+                        <div class="csr-image-gallery">
+                            <img src="images/AGRI-COOP 2025.jpg" alt="Eden CSR Initiative" onclick="openModal(this.src)" class="csr-gallery-img">
+                            <img src="images/AGRI-COOP ANIMAL WELFARE AWARD.jpg" alt="Eden School Program" onclick="openModal(this.src)" class="csr-gallery-img">
+                            <img src="images/CERTIFICATE OF APPRECIATION.jpg" alt="Eden Achievement" onclick="openModal(this.src)" class="csr-gallery-img">
+                        </div>
                         <ul class="csr-benefits">
                             <li>Learning materials donation to support students</li>
                             <li>Agricultural training and school gardens establishment</li>
@@ -3140,6 +3169,11 @@
                         <h3>Kawama Secondary School</h3>
                         <p>SAYA's CSR venture at Kawama Secondary School aims to support student health and well-being while integrating sustainable agriculture into the secondary school curriculum. Key components include:</p>
                         <div class="donation-badge">🏥 Donated Sanitary Towels</div>
+                        <div class="csr-image-gallery">
+                            <img src="images/CSR TO KAWAMA.jpg" alt="Kawama CSR Initiative" onclick="openModal(this.src)" class="csr-gallery-img">
+                            <img src="images/CAMINEX 2025.jpg" alt="Kawama School Program" onclick="openModal(this.src)" class="csr-gallery-img">
+                            <img src="images/CAMINEX AMBASSADOR.jpg" alt="Kawama Youth Training" onclick="openModal(this.src)" class="csr-gallery-img">
+                        </div>
                         <ul class="csr-benefits">
                             <li>Sanitary towels donation supporting menstrual health and school attendance</li>
                             <li>Sustainable farming demonstration plots</li>
